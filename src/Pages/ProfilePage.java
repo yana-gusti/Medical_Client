@@ -6,6 +6,7 @@
 
 package Pages;
 
+import static Pages.SignInPage.profilePage;
 import static Pages.SignInPage.signOutPage;
 import static medical.client.Main.signInPage;
 
@@ -14,6 +15,8 @@ import static medical.client.Main.signInPage;
  * @author iRoma
  */
 public class ProfilePage extends javax.swing.JFrame {
+    public static JournalPage journalPage;
+    public static AddPatientPage addPatientPage;
 
     /**
      * Creates new form LoginPage
@@ -33,10 +36,12 @@ public class ProfilePage extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         TopPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        journalBtn = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        samplesBtn = new javax.swing.JButton();
+        reportsBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         censusTable = new javax.swing.JTable();
 
@@ -46,13 +51,42 @@ public class ProfilePage extends javax.swing.JFrame {
 
         TopPanel.setBackground(new java.awt.Color(153, 255, 153));
 
-        jButton1.setText("Додати нового пацієнта");
+        addBtn.setText("Додати нового пацієнта");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Журнал");
+        journalBtn.setText("Журнал");
+        journalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                journalBtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Вихід");
+        cancelBtn.setText("Вихід");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Видалити пацієнта");
+        deleteBtn.setText("Видалити пацієнта");
+
+        samplesBtn.setText("Зразки");
+        samplesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                samplesBtnActionPerformed(evt);
+            }
+        });
+
+        reportsBtn.setText("Звіти");
+        reportsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportsBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
@@ -60,13 +94,17 @@ public class ProfilePage extends javax.swing.JFrame {
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TopPanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(journalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(samplesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(reportsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         TopPanelLayout.setVerticalGroup(
@@ -74,10 +112,12 @@ public class ProfilePage extends javax.swing.JFrame {
             .addGroup(TopPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(journalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(samplesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reportsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -128,6 +168,31 @@ public class ProfilePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void journalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_journalBtnActionPerformed
+        journalPage = new JournalPage();
+        journalPage.setVisible(true);
+        profilePage.setVisible(false);
+    }//GEN-LAST:event_journalBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        profilePage.setVisible(false);
+        signInPage.setVisible(true);
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        addPatientPage = new AddPatientPage();
+        addPatientPage.setVisible(true);
+        profilePage.setVisible(false);
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void samplesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samplesBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_samplesBtnActionPerformed
+
+    private void reportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportsBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reportsBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -166,11 +231,13 @@ public class ProfilePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     public javax.swing.JPanel TopPanel;
+    public javax.swing.JButton addBtn;
+    public javax.swing.JButton cancelBtn;
     public javax.swing.JTable censusTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton deleteBtn;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JButton journalBtn;
+    public javax.swing.JButton reportsBtn;
+    public javax.swing.JButton samplesBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -79,13 +79,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="addBtn" min="-2" pref="155" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="174" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="deleteBtn" min="-2" pref="155" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="journalBtn" min="-2" pref="82" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="174" max="-2" attributes="0"/>
+                      <Component id="samplesBtn" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="reportsBtn" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="cancelBtn" min="-2" pref="78" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -95,10 +99,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="addBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="journalBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="cancelBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="deleteBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="samplesBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="reportsBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
                   </Group>
@@ -106,25 +112,68 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="addBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x414;&#x43e;&#x434;&#x430;&#x442;&#x438; &#x43d;&#x43e;&#x432;&#x43e;&#x433;&#x43e; &#x43f;&#x430;&#x446;&#x456;&#x454;&#x43d;&#x442;&#x430;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="journalBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x416;&#x443;&#x440;&#x43d;&#x430;&#x43b;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="journalBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="cancelBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x412;&#x438;&#x445;&#x456;&#x434;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="deleteBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x412;&#x438;&#x434;&#x430;&#x43b;&#x438;&#x442;&#x438; &#x43f;&#x430;&#x446;&#x456;&#x454;&#x43d;&#x442;&#x430;"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="samplesBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x440;&#x430;&#x437;&#x43a;&#x438;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="samplesBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="reportsBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x417;&#x432;&#x456;&#x442;&#x438;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reportsBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
