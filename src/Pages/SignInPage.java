@@ -8,6 +8,9 @@ package Pages;
 
 import medical.client.Main;
 import static medical.client.Main.signInPage;
+import services.DBConnection;
+import services.UserServices;
+import services.Users;
 
 /**
  *
@@ -16,6 +19,7 @@ import static medical.client.Main.signInPage;
 public class SignInPage extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
     public static ProfilePage profilePage;
+    public static Users user;
 
     /**
      * Creates new form LoginPage
@@ -40,6 +44,7 @@ public class SignInPage extends javax.swing.JFrame {
         signOut = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +108,7 @@ public class SignInPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(pass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,7 +124,9 @@ public class SignInPage extends javax.swing.JFrame {
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                     .addComponent(jLabel1))
-                .addGap(81, 81, 81)
+                .addGap(38, 38, 38)
+                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,9 +171,28 @@ public class SignInPage extends javax.swing.JFrame {
     }//GEN-LAST:event_signOutActionPerformed
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
-        profilePage = new ProfilePage();
-        profilePage.setVisible(true);
-        signInPage.setVisible(false);
+        String e_mail = email.getText();
+        String _pass = pass.getText();
+        if (e_mail != null && pass != null) {
+	user = UserServices.findUser(e_mail, _pass);
+            if (user != null) {
+            DBConnection.getUser(user);
+                System.out.println("jfhKDJKLDFHlgf");
+                profilePage = new ProfilePage();
+                profilePage.setVisible(true);
+                signInPage.setVisible(false);
+            
+        
+            } else {
+		errorLabel.setText("Invalid login or password!");
+		return;
+		}
+
+            } else {
+            errorLabel.setText("Invalid login or password!");
+            return;
+	}
+
     }//GEN-LAST:event_signInActionPerformed
 
     /**
@@ -206,6 +233,7 @@ public class SignInPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     public javax.swing.JTextField email;
+    public javax.swing.JLabel errorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JTextField pass;

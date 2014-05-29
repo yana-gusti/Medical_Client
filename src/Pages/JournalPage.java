@@ -9,6 +9,7 @@ package Pages;
 import static Pages.ProfilePage.addPatientPage;
 import static Pages.ProfilePage.journalPage;
 import static Pages.SignInPage.profilePage;
+import Pages.journals.*;
 import medical.client.Main;
 import static medical.client.Main.signInPage;
 
@@ -18,7 +19,13 @@ import static medical.client.Main.signInPage;
  */
 public class JournalPage extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
-
+    public static AddmissionPage addmissionPage;
+    public static CallPage callPage;
+    public static DispensaryPage dispensaryPage;
+    public static HospitalHomePage hospitalHomePage;
+    public static InfectionsPage infectionsPage;
+    public static RefusedPage refusedPage;
+    public static VaccinationPage vaccinationPage;
     /**
      * Creates new form LoginPage
      */
@@ -37,33 +44,18 @@ public class JournalPage extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         TopPanel = new javax.swing.JPanel();
-        addBtn = new javax.swing.JButton();
-        cancelBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        vaccinationPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        vaccinationTable = new javax.swing.JTable();
-        infectionsPanel = new javax.swing.JPanel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        infectionsTable = new javax.swing.JTable();
-        dispensaryPanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        dispensaryTable = new javax.swing.JTable();
-        admissionPanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        admissionTable = new javax.swing.JTable();
-        callPanel = new javax.swing.JPanel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        callTable = new javax.swing.JTable();
-        hospitalHomePanel = new javax.swing.JPanel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        hospitalHomeTable = new javax.swing.JTable();
-        refusedVaccinationPanel = new javax.swing.JPanel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        refusedVaccinationTable = new javax.swing.JTable();
+        vaccinationBtn = new javax.swing.JButton();
+        callBtn = new javax.swing.JButton();
+        addmissionBtn = new javax.swing.JButton();
+        dispensaryBtn = new javax.swing.JButton();
+        infectionsBtn = new javax.swing.JButton();
+        refusedBtn = new javax.swing.JButton();
+        homeHospitalBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        cancelBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        censusTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,24 +63,52 @@ public class JournalPage extends javax.swing.JFrame {
 
         TopPanel.setBackground(new java.awt.Color(153, 255, 153));
 
-        addBtn.setText("Додати нового пацієнта");
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
+        vaccinationBtn.setText("Щеплення");
+        vaccinationBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                vaccinationBtnActionPerformed(evt);
             }
         });
 
-        cancelBtn.setText("Повернутися");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+        callBtn.setText("Виклики");
+        callBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelBtnActionPerformed(evt);
+                callBtnActionPerformed(evt);
             }
         });
 
-        deleteBtn.setText("Видалити пацієнта");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        addmissionBtn.setText("Прийом");
+        addmissionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
+                addmissionBtnActionPerformed(evt);
+            }
+        });
+
+        dispensaryBtn.setText("Диспансер");
+        dispensaryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dispensaryBtnActionPerformed(evt);
+            }
+        });
+
+        infectionsBtn.setText("Інфекції");
+        infectionsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infectionsBtnActionPerformed(evt);
+            }
+        });
+
+        refusedBtn.setText("Відмови");
+        refusedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refusedBtnActionPerformed(evt);
+            }
+        });
+
+        homeHospitalBtn.setText("Стац./Вдома");
+        homeHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeHospitalBtnActionPerformed(evt);
             }
         });
 
@@ -96,244 +116,37 @@ public class JournalPage extends javax.swing.JFrame {
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TopPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210)
-                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(vaccinationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infectionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dispensaryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addmissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(callBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(homeHospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(refusedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TopPanelLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(33, 33, 33)
                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(vaccinationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infectionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dispensaryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addmissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(callBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeHospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refusedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
-
-        vaccinationTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад", "Проведене щеплення"
-            }
-        ));
-        jScrollPane1.setViewportView(vaccinationTable);
-
-        javax.swing.GroupLayout vaccinationPanelLayout = new javax.swing.GroupLayout(vaccinationPanel);
-        vaccinationPanel.setLayout(vaccinationPanelLayout);
-        vaccinationPanelLayout.setHorizontalGroup(
-            vaccinationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
-        );
-        vaccinationPanelLayout.setVerticalGroup(
-            vaccinationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Щеплення", vaccinationPanel);
-
-        infectionsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад", "Діагноз", "Дата встановлення діагнозу", "Дата повідомлення в СЕС"
-            }
-        ));
-        jScrollPane8.setViewportView(infectionsTable);
-
-        javax.swing.GroupLayout infectionsPanelLayout = new javax.swing.GroupLayout(infectionsPanel);
-        infectionsPanel.setLayout(infectionsPanelLayout);
-        infectionsPanelLayout.setHorizontalGroup(
-            infectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infectionsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        infectionsPanelLayout.setVerticalGroup(
-            infectionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infectionsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Інфекції", infectionsPanel);
-
-        dispensaryTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад", "Діагноз"
-            }
-        ));
-        jScrollPane2.setViewportView(dispensaryTable);
-
-        javax.swing.GroupLayout dispensaryPanelLayout = new javax.swing.GroupLayout(dispensaryPanel);
-        dispensaryPanel.setLayout(dispensaryPanelLayout);
-        dispensaryPanelLayout.setHorizontalGroup(
-            dispensaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dispensaryPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        dispensaryPanelLayout.setVerticalGroup(
-            dispensaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dispensaryPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Диспансер", dispensaryPanel);
-
-        admissionTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад", "Діагноз"
-            }
-        ));
-        jScrollPane3.setViewportView(admissionTable);
-
-        javax.swing.GroupLayout admissionPanelLayout = new javax.swing.GroupLayout(admissionPanel);
-        admissionPanel.setLayout(admissionPanelLayout);
-        admissionPanelLayout.setHorizontalGroup(
-            admissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(admissionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        admissionPanelLayout.setVerticalGroup(
-            admissionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, admissionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Прийом", admissionPanel);
-
-        callTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Температура тіла", "Діагноз"
-            }
-        ));
-        jScrollPane9.setViewportView(callTable);
-
-        javax.swing.GroupLayout callPanelLayout = new javax.swing.GroupLayout(callPanel);
-        callPanel.setLayout(callPanelLayout);
-        callPanelLayout.setHorizontalGroup(
-            callPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(callPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        callPanelLayout.setVerticalGroup(
-            callPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, callPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Виклики", callPanel);
-
-        hospitalHomeTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "З якого числа", "По яке число", "Діагноз"
-            }
-        ));
-        jScrollPane10.setViewportView(hospitalHomeTable);
-
-        javax.swing.GroupLayout hospitalHomePanelLayout = new javax.swing.GroupLayout(hospitalHomePanel);
-        hospitalHomePanel.setLayout(hospitalHomePanelLayout);
-        hospitalHomePanelLayout.setHorizontalGroup(
-            hospitalHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hospitalHomePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        hospitalHomePanelLayout.setVerticalGroup(
-            hospitalHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hospitalHomePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Стаціонар/Вдома", hospitalHomePanel);
-
-        refusedVaccinationTable.setAutoCreateColumnsFromModel(false);
-        refusedVaccinationTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Від яких щеплень відмовились", "До якого часу"
-            }
-        ));
-        jScrollPane11.setViewportView(refusedVaccinationTable);
-
-        javax.swing.GroupLayout refusedVaccinationPanelLayout = new javax.swing.GroupLayout(refusedVaccinationPanel);
-        refusedVaccinationPanel.setLayout(refusedVaccinationPanelLayout);
-        refusedVaccinationPanelLayout.setHorizontalGroup(
-            refusedVaccinationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(refusedVaccinationPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        refusedVaccinationPanelLayout.setVerticalGroup(
-            refusedVaccinationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, refusedVaccinationPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Відмовилися від щеплень", refusedVaccinationPanel);
 
         jLabel3.setBackground(new java.awt.Color(51, 102, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
@@ -342,6 +155,26 @@ public class JournalPage extends javax.swing.JFrame {
         jLabel3.setText("АРМ Лікаря");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
+
+        cancelBtn.setText("Повернутися");
+        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBtnActionPerformed(evt);
+            }
+        });
+
+        censusTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад"
+            }
+        ));
+        jScrollPane1.setViewportView(censusTable);
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -354,33 +187,42 @@ public class JournalPage extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
-                        .addGap(233, 233, 233))
+                        .addGap(132, 132, 132)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                         .addComponent(TopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                        .addComponent(jTabbedPane1)
+                        .addComponent(jScrollPane1)
                         .addContainerGap())))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,20 +232,52 @@ public class JournalPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        addPatientPage = new AddPatientPage();
-        addPatientPage.setVisible(true);
+    private void vaccinationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccinationBtnActionPerformed
+        vaccinationPage = new VaccinationPage();
+        vaccinationPage.setVisible(true);
         journalPage.setVisible(false);
-    }//GEN-LAST:event_addBtnActionPerformed
+    }//GEN-LAST:event_vaccinationBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         journalPage.setVisible(false);
         profilePage.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
 
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteBtnActionPerformed
+    private void callBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callBtnActionPerformed
+        callPage = new CallPage();
+        callPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_callBtnActionPerformed
+
+    private void addmissionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addmissionBtnActionPerformed
+        addmissionPage = new AddmissionPage();
+        addmissionPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_addmissionBtnActionPerformed
+
+    private void dispensaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispensaryBtnActionPerformed
+        dispensaryPage = new DispensaryPage();
+        dispensaryPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_dispensaryBtnActionPerformed
+
+    private void infectionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infectionsBtnActionPerformed
+        infectionsPage = new InfectionsPage();
+        infectionsPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_infectionsBtnActionPerformed
+
+    private void refusedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refusedBtnActionPerformed
+        refusedPage = new RefusedPage();
+        refusedPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_refusedBtnActionPerformed
+
+    private void homeHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeHospitalBtnActionPerformed
+        hospitalHomePage = new HospitalHomePage();
+        hospitalHomePage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_homeHospitalBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,32 +317,17 @@ public class JournalPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     public javax.swing.JPanel TopPanel;
-    public javax.swing.JButton addBtn;
-    public javax.swing.JPanel admissionPanel;
-    public javax.swing.JTable admissionTable;
-    public javax.swing.JPanel callPanel;
-    public javax.swing.JTable callTable;
+    public javax.swing.JButton addmissionBtn;
+    public javax.swing.JButton callBtn;
     public javax.swing.JButton cancelBtn;
-    public javax.swing.JButton deleteBtn;
-    public javax.swing.JPanel dispensaryPanel;
-    public javax.swing.JTable dispensaryTable;
-    public javax.swing.JPanel hospitalHomePanel;
-    public javax.swing.JTable hospitalHomeTable;
-    public javax.swing.JPanel infectionsPanel;
-    public javax.swing.JTable infectionsTable;
+    public javax.swing.JTable censusTable;
+    public javax.swing.JButton dispensaryBtn;
+    public javax.swing.JButton homeHospitalBtn;
+    public javax.swing.JButton infectionsBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JPanel refusedVaccinationPanel;
-    public javax.swing.JTable refusedVaccinationTable;
-    public javax.swing.JPanel vaccinationPanel;
-    public javax.swing.JTable vaccinationTable;
+    public javax.swing.JButton refusedBtn;
+    public javax.swing.JButton vaccinationBtn;
     // End of variables declaration//GEN-END:variables
 }

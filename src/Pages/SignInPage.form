@@ -62,6 +62,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="errorLabel" alignment="1" min="-2" pref="231" max="-2" attributes="0"/>
                       <Component id="email" min="-2" pref="231" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Component id="pass" alignment="1" min="-2" pref="231" max="-2" attributes="0"/>
@@ -83,7 +84,9 @@
                       <Component id="jLabel2" alignment="3" pref="204" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="errorLabel" min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="email" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="pass" min="-2" pref="32" max="-2" attributes="0"/>
@@ -174,6 +177,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#x410;&#x420;&#x41c; &#x41b;&#x456;&#x43a;&#x430;&#x440;&#x44f;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="errorLabel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
