@@ -8,7 +8,16 @@ package Pages;
 
 import static Pages.SignInPage.profilePage;
 import static Pages.SignInPage.signOutPage;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static medical.client.Main.signInPage;
+import sun.misc.IOUtils;
 
 /**
  *
@@ -48,7 +57,7 @@ public class ProfilePage extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        signOut = new javax.swing.JButton();
+        downloadBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -136,10 +145,10 @@ public class ProfilePage extends javax.swing.JFrame {
 
         jRadioButton4.setText("Звіт 4");
 
-        signOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/17.png"))); // NOI18N
-        signOut.addActionListener(new java.awt.event.ActionListener() {
+        downloadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/17.png"))); // NOI18N
+        downloadBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signOutActionPerformed(evt);
+                downloadBtnActionPerformed(evt);
             }
         });
 
@@ -167,7 +176,7 @@ public class ProfilePage extends javax.swing.JFrame {
                             .addComponent(jRadioButton3)
                             .addComponent(jRadioButton4))
                         .addGap(33, 33, 33)
-                        .addComponent(signOut, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(downloadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(192, 192, 192)
@@ -193,8 +202,8 @@ public class ProfilePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                        .addGap(430, 430, 430)
-                        .addComponent(signOut)))
+                        .addGap(403, 403, 403)
+                        .addComponent(downloadBtn)))
                 .addGap(35, 35, 35))
         );
 
@@ -243,11 +252,18 @@ public class ProfilePage extends javax.swing.JFrame {
         profilePage.setVisible(false);
     }//GEN-LAST:event_reportsBtnActionPerformed
 
-    private void signOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutActionPerformed
-        signOutPage = new SignOutPage();
-        signOutPage.setVisible(true);
-        signInPage.setVisible(false);
-    }//GEN-LAST:event_signOutActionPerformed
+    private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
+        
+      try {
+     if (Desktop.isDesktopSupported()) {
+       Desktop.getDesktop().open(new File(".\\src\\documents\\qqq.doc"));
+     }
+   } catch (IOException ioe) {
+     ioe.printStackTrace();
+  }
+
+
+    }//GEN-LAST:event_downloadBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,6 +306,7 @@ public class ProfilePage extends javax.swing.JFrame {
     public javax.swing.JButton addBtn;
     public javax.swing.JButton cancelBtn;
     public javax.swing.JButton deleteBtn;
+    public javax.swing.JButton downloadBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
@@ -299,6 +316,5 @@ public class ProfilePage extends javax.swing.JFrame {
     public javax.swing.JButton journalBtn;
     public javax.swing.JButton reportsBtn;
     public javax.swing.JButton samplesBtn;
-    public javax.swing.JButton signOut;
     // End of variables declaration//GEN-END:variables
 }
