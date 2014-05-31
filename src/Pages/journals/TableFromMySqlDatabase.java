@@ -19,7 +19,9 @@ import javax.swing.table.*;
 public class TableFromMySqlDatabase extends JFrame
 {
     public TableFromMySqlDatabase()
-    {
+    {Update_table();
+    }
+    public static void Update_table(){
         ArrayList columnNames = new ArrayList();
         ArrayList data = new ArrayList();
 
@@ -104,10 +106,7 @@ public class TableFromMySqlDatabase extends JFrame
         };
 
         JScrollPane scrollPane = new JScrollPane( table );
-        getContentPane().add( scrollPane );
-
-        JPanel buttonPanel = new JPanel();
-        getContentPane().add( buttonPanel, BorderLayout.SOUTH );
+       
     }
 
     public static void main(String[] args)

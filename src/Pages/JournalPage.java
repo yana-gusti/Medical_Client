@@ -6,10 +6,18 @@
 
 package Pages;
 
-import static Pages.ProfilePage.addPatientPage;
 import static Pages.ProfilePage.journalPage;
 import static Pages.SignInPage.profilePage;
 import Pages.journals.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JTable;
 import medical.client.Main;
 import static medical.client.Main.signInPage;
 
@@ -31,6 +39,95 @@ public class JournalPage extends javax.swing.JFrame {
      */
     public JournalPage() {
         initComponents();
+    }
+    public void UpdateTable(){
+        ArrayList columnNames = new ArrayList();
+        ArrayList data = new ArrayList();
+
+        //  Connect to an MySQL Database, run query, get result set
+        String url = "jdbc:mysql://localhost:3306/medical_client";
+        String userid = "root";
+        String password = "yana246897531";
+        String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE diagnoz is not null";
+
+        // Java SE 7 has try-with-resources
+        // This will ensure that the sql objects are closed when the program
+        // is finished with them
+        try (Connection connection = DriverManager.getConnection( url, userid, password );
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery( sql ))
+        {
+            ResultSetMetaData md = rs.getMetaData();
+            int columns = md.getColumnCount();
+
+            //  Get column names
+
+            columnNames.add( "№");
+            columnNames.add( "Прізвище");
+            columnNames.add( "Ім'я");
+            columnNames.add( "Дата народження");
+            columnNames.add( "Адреса");
+            columnNames.add( "Місце роботи/навчання");
+            columnNames.add( "Діагноз");
+
+
+            //  Get row data
+            while (rs.next())
+            {
+                ArrayList row = new ArrayList(columns);
+
+                for (int i = 1; i <= columns; i++)
+                {
+                    row.add( rs.getObject(i) );
+                }
+
+                data.add( row );
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println( e.getMessage() );
+        }
+
+        // Create Vectors and copy over elements from ArrayLists to them
+        // Vector is deprecated but I am using them in this example to keep
+        // things simple - the best practice would be to create a custom defined
+        // class which inherits from the AbstractTableModel class
+        Vector columnNamesVector = new Vector();
+        Vector dataVector = new Vector();
+
+        for (int i = 0; i < data.size(); i++)
+        {
+            ArrayList subArray = (ArrayList)data.get(i);
+            Vector subVector = new Vector();
+            for (int j = 0; j < subArray.size(); j++)
+            {
+                subVector.add(subArray.get(j));
+            }
+            dataVector.add(subVector);
+        }
+        for (int i = 0; i < columnNames.size(); i++ )
+            columnNamesVector.add(columnNames.get(i));
+
+        //  Create table with database data
+        patientTable = new JTable(dataVector, columnNamesVector)
+        {
+            public Class getColumnClass(int column)
+            {
+                for (int row = 0; row < getRowCount(); row++)
+                {
+                    Object o = getValueAt(row, column);
+
+                    if (o != null)
+                    {
+                        return o.getClass();
+                    }
+                }
+
+                return Object.class;
+            }
+        };
     }
 
     /**
@@ -55,7 +152,7 @@ public class JournalPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cancelBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        censusTable = new javax.swing.JTable();
+        UpdateTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,18 +260,8 @@ public class JournalPage extends javax.swing.JFrame {
             }
         });
 
-        censusTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад"
-            }
-        ));
-        jScrollPane1.setViewportView(censusTable);
+
+        jScrollPane1.setViewportView(patientTable);
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -320,13 +407,13 @@ public class JournalPage extends javax.swing.JFrame {
     public javax.swing.JButton addmissionBtn;
     public javax.swing.JButton callBtn;
     public javax.swing.JButton cancelBtn;
-    public javax.swing.JTable censusTable;
     public javax.swing.JButton dispensaryBtn;
     public javax.swing.JButton homeHospitalBtn;
     public javax.swing.JButton infectionsBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable patientTable;
     public javax.swing.JButton refusedBtn;
     public javax.swing.JButton vaccinationBtn;
     // End of variables declaration//GEN-END:variables

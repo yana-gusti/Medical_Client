@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44445d59-fbef-41a9-950e-da811fa67c53" name="Default" comment="Editing" />
+    <list default="true" id="44445d59-fbef-41a9-950e-da811fa67c53" name="Default" comment="Editing">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/CallPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/CallPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/DBConnection.java" afterPath="$PROJECT_DIR$/src/services/DBConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/DispensaryPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/DispensaryPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/HospitalHomePage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/HospitalHomePage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/InfectionsPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/InfectionsPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/JournalPage.form" afterPath="$PROJECT_DIR$/src/Pages/JournalPage.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/JournalPage.java" afterPath="$PROJECT_DIR$/src/Pages/JournalPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/Patient.java" afterPath="$PROJECT_DIR$/src/services/Patient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/services/PatientServices.java" afterPath="$PROJECT_DIR$/src/services/PatientServices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/ProfilePage.form" afterPath="$PROJECT_DIR$/src/Pages/ProfilePage.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/ProfilePage.java" afterPath="$PROJECT_DIR$/src/Pages/ProfilePage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/RefusedPage.form" afterPath="$PROJECT_DIR$/src/Pages/journals/RefusedPage.form" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/RefusedPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/RefusedPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/TableFromMySqlDatabase.java" afterPath="$PROJECT_DIR$/src/Pages/journals/TableFromMySqlDatabase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pages/journals/VaccinationPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/VaccinationPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Яна\Курсові\Medical_Client\src\Pages\AddPatientPage.form" afterPath="$PROJECT_DIR$/src/Pages/journals/addPatient/AddPatientAdmission.form" />
+      <change type="MOVED" beforePath="D:\Яна\Курсові\Medical_Client\src\Pages\AddPatientPage.java" afterPath="$PROJECT_DIR$/src/Pages/journals/addPatient/AddPatientAdmission.java" />
+    </list>
     <list id="f365e859-2e2f-4321-9a53-06f3b25b0049" name="Failed commit: Default" comment="Editing" />
     <ignored path="Medical_Client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,22 +47,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AddPatientPage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
+      <file leaf-file-name="CallPage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pages/journals/CallPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="7259">
-              <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2721" max-vertical-offset="4947">
+              <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#14176#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Patient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
+      <file leaf-file-name="AddPatientAdmission.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pages/journals/addPatient/AddPatientAdmission.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1598">
-              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6336" max-vertical-offset="6902">
+              <caret line="414" column="18" selection-start-line="414" selection-start-column="18" selection-end-line="414" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#20404#0" expanded="true" />
+                <element signature="e#19544#19545#0" expanded="true" />
+                <element signature="e#19618#19619#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,21 +76,12 @@
       <file leaf-file-name="AddmissionPage.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="4012">
-              <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.62092626" vertical-offset="4959" max-vertical-offset="5559">
+              <caret line="347" column="17" selection-start-line="347" selection-start-column="17" selection-end-line="347" selection-end-column="17" />
               <folding>
-                <element signature="e#0#12050#0" expanded="true" />
+                <element signature="e#15247#15248#0" expanded="true" />
+                <element signature="e#15316#15317#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/medical/client/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="578">
-              <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -81,6 +101,14 @@
       <list>
         <option value="$PROJECT_DIR$/src/Pages/AddPatientPage.java" />
         <option value="$PROJECT_DIR$/src/services/Patient.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/CallPage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/DispensaryPage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/HospitalHomePage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/InfectionsPage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/RefusedPage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/VaccinationPage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/JournalPage.java" />
+        <option value="$PROJECT_DIR$/src/Pages/journals/addPatient/AddPatientAdmission.java" />
         <option value="$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java" />
       </list>
     </option>
@@ -116,6 +144,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -125,9 +154,138 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="journals" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="journals" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addPatient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medical" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Medical_Client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -302,32 +460,57 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1378" height="780" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905295" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -357,11 +540,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/CallPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7259">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2721" max-vertical-offset="5015">
+          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14176#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -369,17 +554,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1598">
           <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="4046">
-          <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="5355">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
-            <element signature="e#0#12050#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="e#15316#15317#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/TableFromMySqlDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="2125">
+          <caret line="106" column="0" selection-start-line="85" selection-start-column="8" selection-end-line="106" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -387,79 +580,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="578">
           <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7259">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="1122">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1598">
           <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7259">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="646">
-          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="5933">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="6545">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pages/AddPatientPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="6035">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="1122">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/medical/client/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -468,7 +595,208 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="4012">
           <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
           <folding>
-            <element signature="e#0#12050#0" expanded="true" />
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="e#15316#15317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/medical/client/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="578">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1598">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="4012">
+          <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
+          <folding>
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="e#15316#15317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/medical/client/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="578">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1598">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="505" max-vertical-offset="3944">
+          <caret line="62" column="49" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
+          <folding>
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="e#15316#15317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/medical/client/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="578">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="84" max-vertical-offset="1122">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="646">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/medical/client/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/TableFromMySqlDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1241" max-vertical-offset="2057">
+          <caret line="106" column="0" selection-start-line="85" selection-start-column="8" selection-end-line="106" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.1979866" vertical-offset="135" max-vertical-offset="1870">
+          <caret line="152" column="5" selection-start-line="152" selection-start-column="4" selection-end-line="152" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/DispensaryPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44596913" vertical-offset="1270" max-vertical-offset="3519">
+          <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14192#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/JournalPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0823328" vertical-offset="4364" max-vertical-offset="4947">
+          <caret line="286" column="41" selection-start-line="286" selection-start-column="41" selection-end-line="286" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#20025#0" expanded="true" />
+            <element signature="method#UpdateTable#0;class#JournalPage#0" expanded="false" />
+            <element signature="e#19201#19202#0" expanded="true" />
+            <element signature="e#19267#19268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/VaccinationPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82885903" vertical-offset="1002" max-vertical-offset="3587">
+          <caret line="205" column="3" selection-start-line="205" selection-start-column="3" selection-end-line="205" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#14563#0" expanded="true" />
+            <element signature="method#UpdateTable#0;class#VaccinationPage#0" expanded="false" />
+            <element signature="e#13966#13967#0" expanded="true" />
+            <element signature="e#14036#14037#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/RefusedPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5100671" vertical-offset="2705" max-vertical-offset="4981">
+          <caret line="206" column="3" selection-start-line="206" selection-start-column="3" selection-end-line="206" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#14209#0" expanded="true" />
+            <element signature="e#13620#13621#0" expanded="true" />
+            <element signature="e#13686#13687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/InfectionsPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.057047" vertical-offset="866" max-vertical-offset="3485">
+          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14273#0" expanded="true" />
+            <element signature="method#UpdateTable#0;class#InfectionsPage#0" expanded="false" />
+            <element signature="e#13678#13679#0" expanded="true" />
+            <element signature="e#13747#13748#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/HospitalHomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0285234" vertical-offset="900" max-vertical-offset="3502">
+          <caret line="207" column="1" selection-start-line="207" selection-start-column="1" selection-end-line="207" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#14258#0" expanded="true" />
+            <element signature="method#UpdateTable#0;class#HospitalHomePage#0" expanded="false" />
+            <element signature="e#13658#13659#0" expanded="true" />
+            <element signature="e#13729#13730#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/CallPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2721" max-vertical-offset="4947">
+          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/addPatient/AddPatientAdmission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6336" max-vertical-offset="6902">
+          <caret line="414" column="18" selection-start-line="414" selection-start-column="18" selection-end-line="414" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#20404#0" expanded="true" />
+            <element signature="e#19544#19545#0" expanded="true" />
+            <element signature="e#19618#19619#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pages/journals/AddmissionPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62092626" vertical-offset="4959" max-vertical-offset="5559">
+          <caret line="347" column="17" selection-start-line="347" selection-start-column="17" selection-end-line="347" selection-end-column="17" />
+          <folding>
+            <element signature="e#15247#15248#0" expanded="true" />
+            <element signature="e#15316#15317#0" expanded="true" />
           </folding>
         </state>
       </provider>

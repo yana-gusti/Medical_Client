@@ -169,18 +169,14 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="diagnosis" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="birthday" min="-2" pref="231" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="work" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
                               <Component id="lastName" min="-2" pref="231" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="firstName" min="-2" pref="231" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="middleName" min="-2" pref="231" max="-2" attributes="0"/>
+                              <Component id="birthday" min="-2" pref="231" max="-2" attributes="0"/>
                           </Group>
                           <Component id="address" max="32767" attributes="0"/>
+                          <Component id="work" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -193,18 +189,15 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lastName" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="firstName" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="middleName" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="birthday" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="birthday" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="work" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="work" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="address" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="diagnosis" min="-2" pref="186" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="diagnosis" min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace pref="115" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -220,21 +213,6 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="firstNameMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNameActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="middleName">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;-&#x431;&#x430;&#x442;&#x44c;&#x43a;&#x43e;&#x432;&#x456;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="middleNameMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="middleNameActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
