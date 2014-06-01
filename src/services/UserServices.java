@@ -19,6 +19,14 @@ public class UserServices {
         users.add(newUser);
         return newUser.getId();
     }
+      public static int addPatient(Patient newPatient) {
+        newPatient.setId(DBConnection.savePatient(newPatient));
+        return newPatient.getId();
+    }
+         public static int addGraphic(Graphic newGraphic) {
+        newGraphic.setId(DBConnection.saveGraphic(newGraphic));
+        return newGraphic.getId();
+    }
 
     public static ArrayList<Users> getAll() {
         return users;
@@ -28,6 +36,14 @@ public class UserServices {
         for (Users u : users) {
             if (e_mail.equals(u.getE_mail()) && (password.equals(u.getPass()))) {
                 return u;
+            }
+        }
+        return null;
+    }
+    public static String findGraphic(String e_mail) {
+        for (Users u : users) {
+            if (e_mail.equals(u.getE_mail()) ) {
+                return e_mail;
             }
         }
         return null;

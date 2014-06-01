@@ -13,6 +13,7 @@ import Pages.SignOutPage;
 import static Pages.journals.AddmissionPage.addPatientAddmission;
 import services.DBConnection;
 import services.Patient;
+import services.UserServices;
 
 /**
  *
@@ -283,7 +284,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         Patient patient=null;
         patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, main_diagnoz, null
                 , null, null, null, null, null, null, null, null, null, null);
-        DBConnection.savePatient(patient);
+        UserServices.addPatient(patient);
         System.out.println("patien was added");
         addPatientAddmission.setVisible(false);
         addmissionPage.setVisible(true);

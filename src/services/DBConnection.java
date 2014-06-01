@@ -32,7 +32,7 @@ public class DBConnection implements Interface<Users> {
 		ArrayList<Users> array = new ArrayList<Users>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String SQL = "SELECT * FROM usertable";
+		String SQL = "SELECT * FROM user_table";
 
 		try {
 			stmt = connection.createStatement();
@@ -50,12 +50,32 @@ public class DBConnection implements Interface<Users> {
 
 		return array;
 	}
+        public static ArrayList<String> getAllUserName() {
+
+		ArrayList<String> array = new ArrayList<String>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		String SQL = "SELECT user_name FROM graphic";
+
+		try {
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(SQL);
+			while (rs.next()) {
+				
+				array.add(rs.getString("user_name"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return array;
+	}
 
 	public static int save(Users user) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int id =0;
-		String insertSQL = "INSERT INTO usertable (usertable.first_name, usertable.last_name, usertable.birthday, usertable.e_mail,  usertable.pass) VALUES('"
+		String insertSQL = "INSERT INTO user_table (user_table.first_name, user_table.last_name, user_table.birthday, user_table.e_mail,  user_table.pass) VALUES('"
 				+ user.getFirst_name()
 				+ "', '"
 				+ user.getLast_name()
@@ -84,13 +104,48 @@ public class DBConnection implements Interface<Users> {
 		return id;
 	}
         
+        public static int saveGraphic(Graphic graphic) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int id =0;
+		String insertSQL = "INSERT INTO graphic (graphic.user_name, graphic.moday, graphic.tuesday, graphic.wednesday," +
+                "graphic.thursday, graphic.friday) VALUES('"
+				+ SignInPage.user.getE_mail()
+				+ "', '"
+				+ graphic.getMon()
+				+ "', '"
+				+ graphic.getTue()
+				+ "', '"
+				+ graphic.getWed()
+				+ "', '"
+                                + graphic.getThu()
+				+ "', '"
+				+ graphic.getFri() + "')";
 
+		try {
+			stmt = connection.prepareStatement(insertSQL,
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.executeUpdate();
+
+			rs = stmt.getGeneratedKeys();
+
+			if (rs != null && rs.next()) {
+				id = rs.getInt(id);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return id;
+	}
+        
 	public static ArrayList<Users> getUser(Users user) {
 
 		ArrayList<Users> arrayUsers = new ArrayList<Users>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String SQL = "SELECT * FROM usertable WHERE e_mail = '"
+		String SQL = "SELECT * FROM user_table WHERE e_mail = '"
 				+ user.getE_mail() + "'";
 		System.out.println(SQL);
 		try {
@@ -117,14 +172,13 @@ public class DBConnection implements Interface<Users> {
 	
 
 	
-
 	public boolean delete(Users user) {
 		PreparedStatement stmt = null;
 
 		try {
 
-			String insertSQL = "DELETE FROM usertable WHERE e_mail = '"
-					+ user.getE_mail() + "';";
+			String insertSQL = "DELETE FROM patienttable WHERE first_name = '"
+					+ user.getFirst_name() + "';";
 			stmt = connection.prepareStatement(insertSQL,
 					Statement.RETURN_GENERATED_KEYS);
 			stmt.executeUpdate();
@@ -136,6 +190,63 @@ public class DBConnection implements Interface<Users> {
 		}
 
 	}
+        public boolean deleteUser(Users user) {
+		PreparedStatement stmt = null;
+
+		try {
+
+			String insertSQL = "DELETE FROM patienttable WHERE first_name = '"
+					+ user.getFirst_name() + "';";
+			stmt = connection.prepareStatement(insertSQL,
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+	public static boolean UpdateGraphic(String mon, String tue, String wed, String thu, String fri) {
+		PreparedStatement stmt = null;
+
+		try {
+
+			String insertSQL = "UPDATE graphic SET graphic.moday = '"+mon+"', graphic.tuesday='"+tue+"',"
+                                + " graphic.wednesday='"+wed+"'," +
+                                    "graphic.thursday='"+thu+"',"
+                                + " graphic.friday='"+fri+"' WHERE graphic.user_name like"
+                                + " '"+SignInPage.user.getE_mail()+"';";
+			stmt = connection.prepareStatement(insertSQL,
+					Statement.RETURN_GENERATED_KEYS);
+			stmt.executeUpdate();
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+//        public static boolean SelectEmail(String lastName) {
+//		PreparedStatement stmt = null;
+//
+//		try {
+//
+//			String insertSQL = "SELECT e_mail from user_table where last_name like '"+lastName+"'";
+//			stmt = connection.prepareStatement(insertSQL,
+//					Statement.RETURN_GENERATED_KEYS);
+//                        String email=stmt.execute(lastName)
+//			stmt.executeUpdate();
+//			return true;
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//
+//	}
         public static int savePatient(Patient patient) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;

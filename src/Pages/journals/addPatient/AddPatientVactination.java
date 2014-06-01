@@ -15,6 +15,7 @@ import static Pages.journals.AddmissionPage.addPatientAddmission;
 import static Pages.journals.VaccinationPage.addPatientVactination;
 import services.DBConnection;
 import services.Patient;
+import services.UserServices;
 
 /**
  *
@@ -285,7 +286,7 @@ public class AddPatientVactination extends javax.swing.JFrame {
         Patient patient=null;
         patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null, null
                 , null, null, null, null, null, null, null, main_diagnoz, null, null);
-        DBConnection.savePatient(patient);
+        UserServices.addPatient(patient);
         System.out.println("patien was added");
         addPatientVactination.setVisible(false);
         vactinationPage.setVisible(true);

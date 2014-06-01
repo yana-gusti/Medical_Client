@@ -9,7 +9,6 @@ package Pages.journals;
 import Pages.journals.addPatient.AddPatientAdmission;
 import Pages.*;
 import static Pages.ProfilePage.journalPage;
-import static Pages.SignInPage.profilePage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

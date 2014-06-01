@@ -13,6 +13,7 @@ import Pages.SignOutPage;
 import static Pages.journals.CallPage.addPatientCall;
 import services.DBConnection;
 import services.Patient;
+import services.UserServices;
 
 /**
  *
@@ -301,7 +302,7 @@ public class AddPatientCall extends javax.swing.JFrame {
         Patient patient=null;
         patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, temp, null,main_diagnoz
                 , null, null, null, null, null, null, null, null, null, null);
-        DBConnection.savePatient(patient);
+        UserServices.addPatient(patient);
         System.out.println("patien was added");
         addPatientCall.setVisible(false);
         callPage.setVisible(true);

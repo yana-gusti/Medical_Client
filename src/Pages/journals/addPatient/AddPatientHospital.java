@@ -14,6 +14,7 @@ import static Pages.journals.CallPage.addPatientCall;
 import static Pages.journals.HospitalHomePage.addPatientHospital;
 import services.DBConnection;
 import services.Patient;
+import services.UserServices;
 
 /**
  *
@@ -304,7 +305,7 @@ public class AddPatientHospital extends javax.swing.JFrame {
         Patient patient=null;
         patient = new Patient( null, null, first_name, last_name, birth_day, addres, null, main_diagnoz, null, null,null
                 , null, main_diagnoz, null, date_from, date_to, null, null, null, null, null);
-        DBConnection.savePatient(patient);
+        UserServices.addPatient(patient);
         System.out.println("patien was added");
         addPatientHospital.setVisible(false);
         hospitalHomePage.setVisible(true);
