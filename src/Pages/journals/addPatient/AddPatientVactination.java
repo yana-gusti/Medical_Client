@@ -8,9 +8,11 @@ package Pages.journals.addPatient;
 
 
 import static Pages.JournalPage.addmissionPage;
+import static Pages.JournalPage.vactinationPage;
 import Pages.ProfilePage;
 import Pages.SignOutPage;
 import static Pages.journals.AddmissionPage.addPatientAddmission;
+import static Pages.journals.VaccinationPage.addPatientVactination;
 import services.DBConnection;
 import services.Patient;
 
@@ -18,7 +20,7 @@ import services.Patient;
  *
  * @author iRoma
  */
-public class AddPatientAdmission extends javax.swing.JFrame {
+public class AddPatientVactination extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
     public static ProfilePage profilePage;
 //
@@ -26,7 +28,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
-    public AddPatientAdmission() {
+    public AddPatientVactination() {
         initComponents();
     }
 
@@ -49,7 +51,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         birthday = new javax.swing.JTextField();
         work = new javax.swing.JTextField();
         address = new javax.swing.JTextField();
-        diagnosis = new javax.swing.JTextField();
+        vactin = new javax.swing.JTextField();
         lastName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -159,16 +161,16 @@ public class AddPatientAdmission extends javax.swing.JFrame {
             }
         });
 
-        diagnosis.setForeground(new java.awt.Color(153, 153, 153));
-        diagnosis.setText("Зміст справи");
-        diagnosis.addMouseListener(new java.awt.event.MouseAdapter() {
+        vactin.setForeground(new java.awt.Color(153, 153, 153));
+        vactin.setText("Проведене щеплення");
+        vactin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                diagnosisMouseClicked(evt);
+                vactinMouseClicked(evt);
             }
         });
-        diagnosis.addActionListener(new java.awt.event.ActionListener() {
+        vactin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diagnosisActionPerformed(evt);
+                vactinActionPerformed(evt);
             }
         });
 
@@ -192,7 +194,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
             .addGroup(TopPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(diagnosis)
+                    .addComponent(vactin)
                     .addGroup(TopPanel1Layout.createSequentialGroup()
                         .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -216,8 +218,8 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(diagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addComponent(vactin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
@@ -278,20 +280,20 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         String birth_day = "'"+birthday.getText()+"'";
         String addres = "'"+address.getText()+"'";
         String patient_work = "'"+work.getText()+"'";
-        String main_diagnoz = "'"+diagnosis.getText()+"'";
+        String main_diagnoz = "'"+vactin.getText()+"'";
         
         Patient patient=null;
-        patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, main_diagnoz, null
-                , null, null, null, null, null, null, null, null, null, null);
+        patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null, null
+                , null, null, null, null, null, null, null, main_diagnoz, null, null);
         DBConnection.savePatient(patient);
         System.out.println("patien was added");
-        addPatientAddmission.setVisible(false);
-        addmissionPage.setVisible(true);
+        addPatientVactination.setVisible(false);
+        vactinationPage.setVisible(true);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        addPatientAddmission.setVisible(false);
-        addmissionPage.setVisible(true);
+        addPatientVactination.setVisible(false);
+        vactinationPage.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void firstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstNameMouseClicked
@@ -327,13 +329,13 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addressActionPerformed
 
-    private void diagnosisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diagnosisMouseClicked
-        diagnosis.setText("");
-    }//GEN-LAST:event_diagnosisMouseClicked
+    private void vactinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vactinMouseClicked
+        vactin.setText("");
+    }//GEN-LAST:event_vactinMouseClicked
 
-    private void diagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagnosisActionPerformed
+    private void vactinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vactinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_diagnosisActionPerformed
+    }//GEN-LAST:event_vactinActionPerformed
 
     private void lastNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lastNameMouseClicked
         lastName.setText("");
@@ -350,7 +352,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         birthday.setText("Дата народження");
         work.setText("Місце роботи / навчальний заклад");
         address.setText("Адреса проживання");
-        diagnosis.setText("Зміст справи");
+        vactin.setText("Проведене щеплення");
         
     }//GEN-LAST:event_cleanBtnActionPerformed
 
@@ -371,20 +373,20 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientVactination.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientVactination.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientVactination.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientVactination.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPatientAdmission().setVisible(true);
+                new AddPatientVactination().setVisible(true);
             }
         });
     }
@@ -394,15 +396,15 @@ public class AddPatientAdmission extends javax.swing.JFrame {
     public javax.swing.JPanel TopPanel;
     public javax.swing.JPanel TopPanel1;
     public javax.swing.JButton addBtn;
-    public static javax.swing.JTextField address;
-    public static javax.swing.JTextField birthday;
-    public static javax.swing.JButton cancelBtn;
-    public static javax.swing.JButton cleanBtn;
-    public static javax.swing.JTextField diagnosis;
-    public static javax.swing.JTextField firstName;
+    public javax.swing.JTextField address;
+    public javax.swing.JTextField birthday;
+    public javax.swing.JButton cancelBtn;
+    public javax.swing.JButton cleanBtn;
+    public javax.swing.JTextField firstName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public static javax.swing.JTextField lastName;
-    public static javax.swing.JTextField work;
+    public javax.swing.JTextField lastName;
+    public javax.swing.JTextField vactin;
+    public javax.swing.JTextField work;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ package services;
 public class Patient {
 
 	public Integer id;
+        public String user_name;
 	public String first_name;
 	public String last_name;
 	public String birthday;
@@ -39,6 +40,13 @@ public class Patient {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+        public String getUserName() {
+		return user_name;
+	}
+
+	public void setUserName(String user_name) {
+		this.user_name = user_name;
+        }
         public String getDate_to_refused() {
 		return date_to_refused;
 	}
@@ -179,12 +187,13 @@ public class Patient {
 		this.diagnoz_admission = diagnoz_admission;
 	}
 
-	public Patient(Integer id, String first_name, String last_name, 
+	public Patient(Integer id, String user_name, String first_name, String last_name, 
 			 String birthday, String address,  String work, String diagnoz,String temperature, String diagnoz_admission, String diagnoz_call,
-                         String diagnoz_hospital, String diagnoz_dispansery, String diagnoz_infections, String date_diagnoz,
-                         String date_from, String date_to, String vactination, String date_SES, String vactin_refused,
+                         String diagnoz_dispansery, String diagnoz_hospital,  String diagnoz_infections, 
+                         String date_from, String date_to,String date_diagnoz, String date_SES, String vactination,  String vactin_refused,
                          String date_to_refused) {
 		this.id = id;
+                this.user_name = user_name;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.birthday = birthday;

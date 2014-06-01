@@ -18,8 +18,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JTable;
-import medical.client.Main;
-import static medical.client.Main.signInPage;
 
 /**
  *
@@ -33,7 +31,7 @@ public class JournalPage extends javax.swing.JFrame {
     public static HospitalHomePage hospitalHomePage;
     public static InfectionsPage infectionsPage;
     public static RefusedPage refusedPage;
-    public static VaccinationPage vaccinationPage;
+    public static VaccinationPage vactinationPage;
     /**
      * Creates new form LoginPage
      */
@@ -49,7 +47,7 @@ public class JournalPage extends javax.swing.JFrame {
         String userid = "root";
         String password = "yana246897531";
         String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
-                + "diagnoz from patienttable WHERE diagnoz is not null";
+                + "diagnoz from patienttable WHERE diagnoz is not null and user_name like '"+SignInPage.user.getE_mail()+"'";
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program
@@ -320,8 +318,8 @@ public class JournalPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void vaccinationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccinationBtnActionPerformed
-        vaccinationPage = new VaccinationPage();
-        vaccinationPage.setVisible(true);
+        vactinationPage = new VaccinationPage();
+        vactinationPage.setVisible(true);
         journalPage.setVisible(false);
     }//GEN-LAST:event_vaccinationBtnActionPerformed
 

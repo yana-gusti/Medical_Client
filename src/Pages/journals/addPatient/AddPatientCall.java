@@ -7,10 +7,10 @@
 package Pages.journals.addPatient;
 
 
-import static Pages.JournalPage.addmissionPage;
-import Pages.ProfilePage;
+import static Pages.JournalPage.callPage;
+
 import Pages.SignOutPage;
-import static Pages.journals.AddmissionPage.addPatientAddmission;
+import static Pages.journals.CallPage.addPatientCall;
 import services.DBConnection;
 import services.Patient;
 
@@ -18,15 +18,14 @@ import services.Patient;
  *
  * @author iRoma
  */
-public class AddPatientAdmission extends javax.swing.JFrame {
+public class AddPatientCall extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
-    public static ProfilePage profilePage;
 //
 
     /**
      * Creates new form LoginPage
      */
-    public AddPatientAdmission() {
+    public AddPatientCall() {
         initComponents();
     }
 
@@ -51,6 +50,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         address = new javax.swing.JTextField();
         diagnosis = new javax.swing.JTextField();
         lastName = new javax.swing.JTextField();
+        tempLabel = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -185,22 +185,37 @@ public class AddPatientAdmission extends javax.swing.JFrame {
             }
         });
 
+        tempLabel.setForeground(new java.awt.Color(153, 153, 153));
+        tempLabel.setText("Температура");
+        tempLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tempLabelMouseClicked(evt);
+            }
+        });
+        tempLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tempLabelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TopPanel1Layout = new javax.swing.GroupLayout(TopPanel1);
         TopPanel1.setLayout(TopPanel1Layout);
         TopPanel1Layout.setHorizontalGroup(
             TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TopPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(diagnosis)
-                    .addGroup(TopPanel1Layout.createSequentialGroup()
-                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(address)
-                    .addComponent(work, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(diagnosis)
+                        .addGroup(TopPanel1Layout.createSequentialGroup()
+                            .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(address)
+                        .addComponent(work, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TopPanel1Layout.setVerticalGroup(
@@ -215,9 +230,11 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                 .addComponent(work, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(tempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(diagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
@@ -279,19 +296,20 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         String addres = "'"+address.getText()+"'";
         String patient_work = "'"+work.getText()+"'";
         String main_diagnoz = "'"+diagnosis.getText()+"'";
+        String temp = "'"+tempLabel.getText()+"'";
         
         Patient patient=null;
-        patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, main_diagnoz, null
+        patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, temp, null,main_diagnoz
                 , null, null, null, null, null, null, null, null, null, null);
         DBConnection.savePatient(patient);
         System.out.println("patien was added");
-        addPatientAddmission.setVisible(false);
-        addmissionPage.setVisible(true);
+        addPatientCall.setVisible(false);
+        callPage.setVisible(true);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        addPatientAddmission.setVisible(false);
-        addmissionPage.setVisible(true);
+        addPatientCall.setVisible(false);
+        callPage.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void firstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstNameMouseClicked
@@ -351,8 +369,17 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         work.setText("Місце роботи / навчальний заклад");
         address.setText("Адреса проживання");
         diagnosis.setText("Зміст справи");
+        tempLabel.setText("Температура");
         
     }//GEN-LAST:event_cleanBtnActionPerformed
+
+    private void tempLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tempLabelMouseClicked
+        tempLabel.setText("");
+    }//GEN-LAST:event_tempLabelMouseClicked
+
+    private void tempLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tempLabelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,20 +398,20 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientCall.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientCall.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientCall.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientCall.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPatientAdmission().setVisible(true);
+                new AddPatientCall().setVisible(true);
             }
         });
     }
@@ -394,15 +421,16 @@ public class AddPatientAdmission extends javax.swing.JFrame {
     public javax.swing.JPanel TopPanel;
     public javax.swing.JPanel TopPanel1;
     public javax.swing.JButton addBtn;
-    public static javax.swing.JTextField address;
-    public static javax.swing.JTextField birthday;
-    public static javax.swing.JButton cancelBtn;
-    public static javax.swing.JButton cleanBtn;
-    public static javax.swing.JTextField diagnosis;
-    public static javax.swing.JTextField firstName;
+    public javax.swing.JTextField address;
+    public javax.swing.JTextField birthday;
+    public javax.swing.JButton cancelBtn;
+    public javax.swing.JButton cleanBtn;
+    public javax.swing.JTextField diagnosis;
+    public javax.swing.JTextField firstName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public static javax.swing.JTextField lastName;
-    public static javax.swing.JTextField work;
+    public javax.swing.JTextField lastName;
+    public javax.swing.JTextField tempLabel;
+    public javax.swing.JTextField work;
     // End of variables declaration//GEN-END:variables
 }

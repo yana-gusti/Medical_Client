@@ -8,9 +8,11 @@ package Pages.journals.addPatient;
 
 
 import static Pages.JournalPage.addmissionPage;
+import static Pages.JournalPage.refusedPage;
 import Pages.ProfilePage;
 import Pages.SignOutPage;
 import static Pages.journals.AddmissionPage.addPatientAddmission;
+import static Pages.journals.RefusedPage.addPatientRefused;
 import services.DBConnection;
 import services.Patient;
 
@@ -18,7 +20,7 @@ import services.Patient;
  *
  * @author iRoma
  */
-public class AddPatientAdmission extends javax.swing.JFrame {
+public class AddPatientRefused extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
     public static ProfilePage profilePage;
 //
@@ -26,7 +28,7 @@ public class AddPatientAdmission extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
-    public AddPatientAdmission() {
+    public AddPatientRefused() {
         initComponents();
     }
 
@@ -49,8 +51,9 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         birthday = new javax.swing.JTextField();
         work = new javax.swing.JTextField();
         address = new javax.swing.JTextField();
-        diagnosis = new javax.swing.JTextField();
+        dateToRefused = new javax.swing.JTextField();
         lastName = new javax.swing.JTextField();
+        vactinRefused = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -159,16 +162,16 @@ public class AddPatientAdmission extends javax.swing.JFrame {
             }
         });
 
-        diagnosis.setForeground(new java.awt.Color(153, 153, 153));
-        diagnosis.setText("Зміст справи");
-        diagnosis.addMouseListener(new java.awt.event.MouseAdapter() {
+        dateToRefused.setForeground(new java.awt.Color(153, 153, 153));
+        dateToRefused.setText("До якого числа");
+        dateToRefused.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                diagnosisMouseClicked(evt);
+                dateToRefusedMouseClicked(evt);
             }
         });
-        diagnosis.addActionListener(new java.awt.event.ActionListener() {
+        dateToRefused.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diagnosisActionPerformed(evt);
+                dateToRefusedActionPerformed(evt);
             }
         });
 
@@ -185,6 +188,19 @@ public class AddPatientAdmission extends javax.swing.JFrame {
             }
         });
 
+        vactinRefused.setForeground(new java.awt.Color(153, 153, 153));
+        vactinRefused.setText("Від якого щеплення відмовилися");
+        vactinRefused.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vactinRefusedMouseClicked(evt);
+            }
+        });
+        vactinRefused.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vactinRefusedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TopPanel1Layout = new javax.swing.GroupLayout(TopPanel1);
         TopPanel1.setLayout(TopPanel1Layout);
         TopPanel1Layout.setHorizontalGroup(
@@ -192,7 +208,6 @@ public class AddPatientAdmission extends javax.swing.JFrame {
             .addGroup(TopPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(diagnosis)
                     .addGroup(TopPanel1Layout.createSequentialGroup()
                         .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -200,7 +215,12 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(address)
-                    .addComponent(work, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(work, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanel1Layout.createSequentialGroup()
+                        .addComponent(vactinRefused, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dateToRefused, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TopPanel1Layout.setVerticalGroup(
@@ -216,8 +236,10 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(diagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dateToRefused, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vactinRefused, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
@@ -278,20 +300,21 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         String birth_day = "'"+birthday.getText()+"'";
         String addres = "'"+address.getText()+"'";
         String patient_work = "'"+work.getText()+"'";
-        String main_diagnoz = "'"+diagnosis.getText()+"'";
+        String main_diagnoz = "'"+vactinRefused.getText()+"'";
+        String date_to_refused = "'"+dateToRefused.getText()+"'";
         
         Patient patient=null;
-        patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, main_diagnoz, null
-                , null, null, null, null, null, null, null, null, null, null);
+        patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null, null
+                , null, null, null, null, null, null, null, null, main_diagnoz, date_to_refused);
         DBConnection.savePatient(patient);
         System.out.println("patien was added");
-        addPatientAddmission.setVisible(false);
-        addmissionPage.setVisible(true);
+        addPatientRefused.setVisible(false);
+        refusedPage.setVisible(true);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        addPatientAddmission.setVisible(false);
-        addmissionPage.setVisible(true);
+        addPatientRefused.setVisible(false);
+        refusedPage.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void firstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstNameMouseClicked
@@ -327,13 +350,13 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addressActionPerformed
 
-    private void diagnosisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_diagnosisMouseClicked
-        diagnosis.setText("");
-    }//GEN-LAST:event_diagnosisMouseClicked
+    private void dateToRefusedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateToRefusedMouseClicked
+        dateToRefused.setText("");
+    }//GEN-LAST:event_dateToRefusedMouseClicked
 
-    private void diagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagnosisActionPerformed
+    private void dateToRefusedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateToRefusedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_diagnosisActionPerformed
+    }//GEN-LAST:event_dateToRefusedActionPerformed
 
     private void lastNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lastNameMouseClicked
         lastName.setText("");
@@ -350,9 +373,18 @@ public class AddPatientAdmission extends javax.swing.JFrame {
         birthday.setText("Дата народження");
         work.setText("Місце роботи / навчальний заклад");
         address.setText("Адреса проживання");
-        diagnosis.setText("Зміст справи");
+        vactinRefused.setText("Выд якого щеплення відмовилися");
+        dateToRefused.setText("До якого числа");
         
     }//GEN-LAST:event_cleanBtnActionPerformed
+
+    private void vactinRefusedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vactinRefusedMouseClicked
+        vactinRefused.setText("");
+    }//GEN-LAST:event_vactinRefusedMouseClicked
+
+    private void vactinRefusedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vactinRefusedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vactinRefusedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,20 +403,20 @@ public class AddPatientAdmission extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientRefused.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientRefused.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientRefused.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPatientAdmission.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatientRefused.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPatientAdmission().setVisible(true);
+                new AddPatientRefused().setVisible(true);
             }
         });
     }
@@ -394,15 +426,16 @@ public class AddPatientAdmission extends javax.swing.JFrame {
     public javax.swing.JPanel TopPanel;
     public javax.swing.JPanel TopPanel1;
     public javax.swing.JButton addBtn;
-    public static javax.swing.JTextField address;
-    public static javax.swing.JTextField birthday;
-    public static javax.swing.JButton cancelBtn;
-    public static javax.swing.JButton cleanBtn;
-    public static javax.swing.JTextField diagnosis;
-    public static javax.swing.JTextField firstName;
+    public javax.swing.JTextField address;
+    public javax.swing.JTextField birthday;
+    public javax.swing.JButton cancelBtn;
+    public javax.swing.JButton cleanBtn;
+    public javax.swing.JTextField dateToRefused;
+    public javax.swing.JTextField firstName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    public static javax.swing.JTextField lastName;
-    public static javax.swing.JTextField work;
+    public javax.swing.JTextField lastName;
+    public javax.swing.JTextField vactinRefused;
+    public javax.swing.JTextField work;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,7 +32,7 @@ import services.Patient;
  */
 public class AddmissionPage extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
-    public static AddPatientAdmission addPatientPage;
+    public static AddPatientAdmission addPatientAddmission;
 
     /**
      * Creates new form LoginPage
@@ -49,7 +49,8 @@ public class AddmissionPage extends javax.swing.JFrame {
         String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
         String password = "yana246897531";
-        String sql = "SELECT id, first_name, last_name, birthday, address, `work`, diagnoz_admission FROM patienttable WHERE diagnoz_admission is NOT NULL";
+        String sql = "SELECT id, first_name, last_name, birthday, address, `work`, diagnoz_admission FROM patienttable "
+                + "WHERE diagnoz_admission is NOT NULL and user_name like '"+SignInPage.user.getE_mail()+"'";
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program
@@ -291,13 +292,13 @@ public class AddmissionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        addPatientPage = new AddPatientAdmission();
-        addPatientPage.setVisible(true);
+        addPatientAddmission = new AddPatientAdmission();
+        addPatientAddmission.setVisible(true);
         journalPage.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        addPatientPage.setVisible(false);
+        addPatientAddmission.setVisible(false);
         journalPage.setVisible(true);
         
     }//GEN-LAST:event_cancelBtnActionPerformed

@@ -7,10 +7,9 @@
 package Pages.journals;
 
 import Pages.*;
+import static Pages.JournalPage.vactinationPage;
 import static Pages.ProfilePage.journalPage;
-import static Pages.SignInPage.profilePage;
-import static Pages.journals.AddmissionPage.addPatientPage;
-import Pages.journals.addPatient.AddPatientAdmission;
+import Pages.journals.addPatient.AddPatientVactination;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,8 +19,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JTable;
-import medical.client.Main;
-import static medical.client.Main.signInPage;
 
 /**
  *
@@ -29,6 +26,7 @@ import static medical.client.Main.signInPage;
  */
 public class VaccinationPage extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
+    public static AddPatientVactination addPatientVactination;
 
     /**
      * Creates new form LoginPage
@@ -45,7 +43,7 @@ public void UpdateTable(){
         String userid = "root";
         String password = "yana246897531";
         String sql = "SELECT id, first_name, last_name, birthday, address, `work`, vactination "
-                + "from patienttable WHERE vactination is not null;";
+                + "from patienttable WHERE vactination is not null and user_name like '"+SignInPage.user.getE_mail()+"'";
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program
@@ -259,14 +257,14 @@ public void UpdateTable(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        addPatientPage = new AddPatientAdmission();
-        addPatientPage.setVisible(true);
+        addPatientVactination = new AddPatientVactination();
+        addPatientVactination.setVisible(true);
         journalPage.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        journalPage.setVisible(false);
-        profilePage.setVisible(true);
+        vactinationPage.setVisible(false);
+        journalPage.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed

@@ -140,19 +140,19 @@ public class DBConnection implements Interface<Users> {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		int id =0;
-		String insertSQL = "INSERT INTO patienttable (patienttable.first_name, patienttable.last_name, patienttable.birthday, "
+		String insertSQL = "INSERT INTO patienttable (patienttable.user_name, patienttable.first_name, patienttable.last_name, patienttable.birthday, "
                         + "patienttable.address, patienttable.`work`, patienttable.diagnoz,"
                         + " patienttable.temperature, patienttable.diagnoz_admission, patienttable.diagnoz_call, "
                         + "patienttable.diagnoz_dispansery, patienttable.diagnoz_hospital, patienttable.diagnoz_infections,"
                         + " patienttable.date_from, patienttable.date_to, patienttable.date_diagnoz, "
                         + "patienttable.date_SES, patienttable.vactination, patienttable.vactin_refused, patienttable.date_to_refused ) "
-                        + "VALUES ('"+patient.getFirst_name()+"', '"+patient.getLast_name()+"', '"+patient.getBirthday()+"', "
-                        + "'"+patient.getAddress()+"', '"+patient.getWork()+"',"
-                        + " '"+patient.getDiagnoz()+"', '"+patient.getTemp()+"', '"+patient.getDiagnoz_admission()+"', '"+patient.getDiagnoz_call()+"',"
-                        + " '"+patient.getDiagnoz_dispansery()+"', '"+patient.getDiagnoz_hospital()+"', "
-                        + "'"+patient.getDiagnoz_infections()+"', '"+patient.getDate_from()+"', '"+patient.getDate_to()+"',"
-                        + " '"+patient.getDate_diagnoz()+"', '"+patient.getDate_SES()+"', "
-                        + "'"+patient.getVactination()+"', '"+patient.getVactin_refused()+"','"+patient.getDate_to_refused()+"');";
+                        + "VALUES ('"+SignInPage.user.getE_mail()+"',"+patient.getFirst_name()+", "+patient.getLast_name()+", "+patient.getBirthday()+", "
+                        + ""+patient.getAddress()+", "+patient.getWork()+","
+                        + " "+patient.getDiagnoz()+", "+patient.getTemp()+", "+patient.getDiagnoz_admission()+", "+patient.getDiagnoz_call()+","
+                        + " "+patient.getDiagnoz_dispansery()+", "+patient.getDiagnoz_hospital()+", "
+                        + ""+patient.getDiagnoz_infections()+", "+patient.getDate_from()+", "+patient.getDate_to()+","
+                        + " "+patient.getDate_diagnoz()+", "+patient.getDate_SES()+", "
+                        + ""+patient.getVactination()+", "+patient.getVactin_refused()+","+patient.getDate_to_refused()+");";
 
 		try {
 			stmt = connection.prepareStatement(insertSQL,
