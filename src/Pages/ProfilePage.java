@@ -381,11 +381,6 @@ public class ProfilePage extends javax.swing.JFrame {
         TopPanel = new javax.swing.JPanel();
         journalBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        downloadBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         listOfDoctors = new javax.swing.JComboBox();
@@ -402,6 +397,10 @@ public class ProfilePage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         calendar = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        firstSample = new javax.swing.JButton();
+        secondSample = new javax.swing.JButton();
+        thirdSample = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -443,21 +442,6 @@ public class ProfilePage extends javax.swing.JFrame {
                     .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
-
-        jRadioButton1.setText("Звіт 1");
-
-        jRadioButton2.setText("Звіт 2");
-
-        jRadioButton3.setText("Звіт 3");
-
-        jRadioButton4.setText("Звіт 4");
-
-        downloadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/17.png"))); // NOI18N
-        downloadBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                downloadBtnActionPerformed(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
 
@@ -512,6 +496,29 @@ public class ProfilePage extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jLabel3.setText("Зразки документів");
+
+        firstSample.setText("Зразок №1");
+        firstSample.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstSampleActionPerformed(evt);
+            }
+        });
+
+        secondSample.setText("Зразок №2");
+        secondSample.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secondSampleActionPerformed(evt);
+            }
+        });
+
+        thirdSample.setText("Зразок №3");
+        thirdSample.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thirdSampleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -526,37 +533,40 @@ public class ProfilePage extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(graphicOfWork, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addComponent(graphicOfWork, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MainPanelLayout.createSequentialGroup()
                                 .addGap(16, 16, 16)
                                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(MainPanelLayout.createSequentialGroup()
-                                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(41, 41, 41)
-                                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(thu, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(wed, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(tuesday, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(fri, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(monday, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(listOfDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(Change_graphic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(MainPanelLayout.createSequentialGroup()
+                                            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(41, 41, 41)
                                             .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jRadioButton2)
-                                                .addComponent(jRadioButton1)
-                                                .addComponent(jRadioButton3)
-                                                .addComponent(jRadioButton4))
-                                            .addGap(33, 33, 33)
-                                            .addComponent(downloadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(119, 119, 119)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(thu, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(wed, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(tuesday, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(fri, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(monday, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(listOfDoctors, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(MainPanelLayout.createSequentialGroup()
+                                            .addGap(35, 35, 35)
+                                            .addComponent(Change_graphic, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(MainPanelLayout.createSequentialGroup()
+                                        .addComponent(firstSample)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(secondSample)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(thirdSample)))))
+                        .addGap(66, 66, 66)
                         .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -596,21 +606,16 @@ public class ProfilePage extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addComponent(Change_graphic)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(downloadBtn, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(35, 35, 35))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addComponent(calendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel3)
+                        .addGap(30, 30, 30)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstSample)
+                            .addComponent(secondSample)
+                            .addComponent(thirdSample))
+                        .addGap(0, 50, Short.MAX_VALUE))
+                    .addComponent(calendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -663,18 +668,6 @@ public class ProfilePage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_listOfDoctorsItemStateChanged
 
-    private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
-
-        try {
-            if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().open(new File(".\\src\\documents\\qqq.doc"));
-            }
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-    }//GEN-LAST:event_downloadBtnActionPerformed
-
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
 
         signInPage = new SignInPage();
@@ -687,6 +680,36 @@ public class ProfilePage extends javax.swing.JFrame {
         journalPage.setVisible(true);
         profilePage.setVisible(false);
     }//GEN-LAST:event_journalBtnActionPerformed
+
+    private void firstSampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstSampleActionPerformed
+            try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(new File(".\\src\\documents\\sample1.doc"));
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }//GEN-LAST:event_firstSampleActionPerformed
+
+    private void secondSampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondSampleActionPerformed
+            try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(new File(".\\src\\documents\\sample2.doc"));
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }//GEN-LAST:event_secondSampleActionPerformed
+
+    private void thirdSampleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thirdSampleActionPerformed
+                    try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(new File(".\\src\\documents\\sample3.doc"));
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }//GEN-LAST:event_thirdSampleActionPerformed
     
     /**
      * @param args the command line arguments
@@ -729,23 +752,22 @@ public class ProfilePage extends javax.swing.JFrame {
     private javax.swing.JPanel TopPanel;
     public javax.swing.JPanel calendar;
     private javax.swing.JButton cancelBtn;
-    private javax.swing.JButton downloadBtn;
+    public javax.swing.JButton firstSample;
     private javax.swing.JTextField fri;
     private javax.swing.JLabel graphicOfWork;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JButton journalBtn;
     private javax.swing.JComboBox listOfDoctors;
     private javax.swing.JTextField monday;
+    public javax.swing.JButton secondSample;
+    public javax.swing.JButton thirdSample;
     private javax.swing.JTextField thu;
     private javax.swing.JTextField tuesday;
     private javax.swing.JTextField wed;
