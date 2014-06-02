@@ -50,6 +50,28 @@ public class DBConnection implements Interface<Users> {
 
 		return array;
 	}
+        public static ArrayList<Patient> getAllPatient() {
+
+		ArrayList<Patient> array = new ArrayList<Patient>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		String SQL = "SELECT * FROM patienttable";
+
+		try {
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(SQL);
+			while (rs.next()) {
+				Patient patient = new Patient(null, null, rs.getString("first_name"),rs.getString("last_name"), null, null, null,null, null, null, null, null, null, null
+                                ,null,null,null,null,null,null,null);
+				patient.setId(rs.getInt("id"));
+				array.add(patient);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return array;
+	}
         public static ArrayList<String> getAllUserName() {
 
 		ArrayList<String> array = new ArrayList<String>();
@@ -172,13 +194,13 @@ public class DBConnection implements Interface<Users> {
 	
 
 	
-	public boolean delete(Users user) {
+	public static boolean deletePatient(Patient patient) {
 		PreparedStatement stmt = null;
 
 		try {
 
-			String insertSQL = "DELETE FROM patienttable WHERE first_name = '"
-					+ user.getFirst_name() + "';";
+			String insertSQL = "DELETE FROM patienttable WHERE last_name = '"
+					+ patient.getLast_name() + "';";
 			stmt = connection.prepareStatement(insertSQL,
 					Statement.RETURN_GENERATED_KEYS);
 			stmt.executeUpdate();
@@ -282,6 +304,11 @@ public class DBConnection implements Interface<Users> {
 
 		return id;
 	}
+
+    @Override
+    public boolean delete(Users object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	
 

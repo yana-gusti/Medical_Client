@@ -6,9 +6,10 @@
 
 package Pages.journals;
 
-import Pages.journals.addPatient.AddPatientAdmission;
 import Pages.*;
+import static Pages.JournalPage.addmissionPage;
 import static Pages.ProfilePage.journalPage;
+import Pages.journals.addPatient.AddPatient;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -31,7 +32,7 @@ import services.Patient;
  */
 public class AddmissionPage extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
-    public static AddPatientAdmission addPatientAddmission;
+    public static AddPatient addPatient;
 
     /**
      * Creates new form LoginPage
@@ -47,7 +48,7 @@ public class AddmissionPage extends javax.swing.JFrame {
         //  Connect to an MySQL Database, run query, get result set
         String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
-        String password = "yana246897531";
+        String password = "1";
         String sql = "SELECT id, first_name, last_name, birthday, address, `work`, diagnoz_admission FROM patienttable "
                 + "WHERE diagnoz_admission is NOT NULL and user_name like '"+SignInPage.user.getE_mail()+"'";
 
@@ -144,33 +145,10 @@ public class AddmissionPage extends javax.swing.JFrame {
         TopPanel = new javax.swing.JPanel();
         addBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         UpdateTable();
-
-//        ArrayList<Patient> dataList;
-//        dataList = DBConnection.getAdmissionPatient;
-//        DefaultTableModel model = new DefaultTableModel();
-//        model.setRowCount(dataList.size());
-//        int row = 0;
-//        for (Items data : dataList) {
-//            model.setValueAt(data.id, row, 0);
-//            model.setValueAt(data.day, row, 1);
-//            model.setValueAt(data.lessonNumb, row, 2);
-//            model.setValueAt(data.firstCourse, row, 3);
-//            model.setValueAt(data.firstAud, row, 4);
-//            model.setValueAt(data.secondCourse, row, 5);
-//            model.setValueAt(data.secondAud, row, 6);
-//            model.setValueAt(data.thirdCourse, row, 7);
-//            model.setValueAt(data.thirdAud, row, 8);
-//            model.setValueAt(data.fourCourse, row, 9);
-//            model.setValueAt(data.fourAud, row, 10);
-//            model.setValueAt(data.fiveCourse, row, 11);
-//            model.setValueAt(data.fiveAud, row, 12);
-//            row++;
-//        }
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,13 +170,6 @@ public class AddmissionPage extends javax.swing.JFrame {
             }
         });
 
-        deleteBtn.setText("Видалити пацієнта");
-        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
@@ -206,9 +177,7 @@ public class AddmissionPage extends javax.swing.JFrame {
             .addGroup(TopPanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210)
+                .addGap(402, 402, 402)
                 .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -218,31 +187,20 @@ public class AddmissionPage extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jLabel3.setBackground(new java.awt.Color(51, 102, 0));
-        jLabel3.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 153, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("АРМ Лікаря");
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
 
-//        admissionTable.setModel(new javax.swing.table.DefaultTableModel(
-//            new Object [][] {
-//                {null, null, null, null, null, null},
-//                {null, null, null, null, null, null},
-//                {null, null, null, null, null, null},
-//                {null, null, null, null, null, null}
-//            },
-//            new String [] {
-//                "№", "ПІБ", "Дата народження", "Адреса проживання", "Місце роботи/навчальний заклад", "Діагноз"
-//            }
-//        ));
+    
         jScrollPane3.setViewportView(admissionTable);
+
+        jLabel2.setBackground(new java.awt.Color(51, 102, 0));
+        jLabel2.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("АРМ Сімейного Лікаря");
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -253,22 +211,23 @@ public class AddmissionPage extends javax.swing.JFrame {
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(233, 233, 233))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3)
+                    .addComponent(TopPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -291,20 +250,16 @@ public class AddmissionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        addPatientAddmission = new AddPatientAdmission();
-        addPatientAddmission.setVisible(true);
-        journalPage.setVisible(false);
+        addPatient = new AddPatient();
+        addPatient.setVisible(true);
+        addmissionPage.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        addPatientAddmission.setVisible(false);
+        addmissionPage.setVisible(false);
         journalPage.setVisible(true);
         
     }//GEN-LAST:event_cancelBtnActionPerformed
-
-    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,11 +300,10 @@ public class AddmissionPage extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     public javax.swing.JPanel TopPanel;
     public javax.swing.JButton addBtn;
-    public static javax.swing.JTable admissionTable;
+    public javax.swing.JTable admissionTable;
     public javax.swing.JButton cancelBtn;
-    public javax.swing.JButton deleteBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,7 +9,7 @@ package Pages.journals;
 import Pages.*;
 import static Pages.JournalPage.hospitalHomePage;
 import static Pages.ProfilePage.journalPage;
-import Pages.journals.addPatient.AddPatientHospital;
+import Pages.journals.addPatient.AddPatient;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,7 +26,7 @@ import javax.swing.JTable;
  */
 public class HospitalHomePage extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
-    public static AddPatientHospital addPatientHospital;
+    public static AddPatient addPatient;
 
     /**
      * Creates new form LoginPage
@@ -41,7 +41,7 @@ public class HospitalHomePage extends javax.swing.JFrame {
         //  Connect to an MySQL Database, run query, get result set
         String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
-        String password = "yana246897531";
+        String password = "1";
         String sql = "SELECT id, first_name, last_name, birthday, address, date_from, date_to, "
                 + "diagnoz_hospital FROM patienttable WHERE diagnoz_hospital is NOT NULL and user_name like '"+SignInPage.user.getE_mail()+"'";
 
@@ -139,10 +139,11 @@ public class HospitalHomePage extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        hospitalHomeTable = new javax.swing.JTable();
+		UpdateTable();
+		
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,26 +196,15 @@ public class HospitalHomePage extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jLabel3.setBackground(new java.awt.Color(51, 102, 0));
-        jLabel3.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 153, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("АРМ Лікаря");
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
 
-        hospitalHomeTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "№", "ПІБ", "Дата народження", "Адреса проживання", "З якого числа", "По яке число", "Діагноз"
-            }
-        ));
         jScrollPane10.setViewportView(hospitalHomeTable);
+
+        jLabel2.setBackground(new java.awt.Color(51, 102, 0));
+        jLabel2.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 153, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("АРМ Сімейного Лікаря");
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -225,22 +215,20 @@ public class HospitalHomePage extends javax.swing.JFrame {
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(233, 233, 233))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane10)
+                    .addComponent(TopPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,8 +251,8 @@ public class HospitalHomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        addPatientHospital = new AddPatientHospital();
-        addPatientHospital.setVisible(true);
+        addPatient = new AddPatient();
+        addPatient.setVisible(true);
         hospitalHomePage.setVisible(false);
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -320,7 +308,7 @@ public class HospitalHomePage extends javax.swing.JFrame {
     public javax.swing.JButton deleteBtn;
     public javax.swing.JTable hospitalHomeTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane10;
     // End of variables declaration//GEN-END:variables
 }

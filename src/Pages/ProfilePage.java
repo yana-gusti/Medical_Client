@@ -9,8 +9,6 @@ package Pages;
 
 import static Pages.SignInPage.profilePage;
 import static Pages.SignInPage.signOutPage;
-import static Pages.journals.AddmissionPage.admissionTable;
-import Pages.journals.addPatient.AddPatientAdmission;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -252,7 +250,7 @@ public class ProfilePage extends javax.swing.JFrame {
         //  Connect to an MySQL Database, run query, get result set
         String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
-        String password = "yana246897531";
+        String password = "1";
         String sql = "SELECT moday, tuesday, wednesday, thursday, friday "
                 + "from graphic where user_name like '"+email+"'";
 
@@ -272,83 +270,17 @@ public class ProfilePage extends javax.swing.JFrame {
                
             }
          }
-//            System.out.println(sql);
-//            ResultSetMetaData md = rs.getMetaData();
-//            int columns = md.getColumnCount();
-//
-//            //  Get column names
-//            System.out.println("1");
-//            columnNames.add( "Понеділок");
-//            columnNames.add( "Вівторок");
-//            columnNames.add( "Середа");
-//            columnNames.add( "Четвер");
-//            columnNames.add( "П'ятниця");
-//
-//
-//            //  Get row data
-//            while (rs.next())
-//            {
-//                ArrayList row = new ArrayList(columns);
-//
-//                for (int i = 1; i <= columns; i++)
-//                {
-//                    
-//                    row.add( rs.getObject(i) );
-//                    System.out.println("2");
-//                }
-//
-//                data.add( row );
-//            }
-//        }
+
         catch (SQLException e)
         {
             System.out.println( e.getMessage() );
         }
-//
-//        Vector columnNamesVector = new Vector();
-//        Vector dataVector = new Vector();
-//
-//        for (int i = 0; i < data.size(); i++)
-//        {
-//            ArrayList subArray = (ArrayList)data.get(i);
-//            Vector subVector = new Vector();
-//            for (int j = 0; j < subArray.size(); j++)
-//            {
-//                subVector.add(subArray.get(j));
-//                System.out.println("3");
-//            }
-//            dataVector.add(subVector);
-//        }
-//        for (int i = 0; i < columnNames.size(); i++ )
-//            columnNamesVector.add(columnNames.get(i));
-//
-//        //  Create table with database data
-//        graphicTable= new JTable(dataVector, columnNamesVector)
-//        {
-//            public Class getColumnClass(int column)
-//            {
-//                for (int row = 0; row < getRowCount(); row++)
-//                {
-//                    
-//                    Object o = getValueAt(row, column);
-//                    System.out.println("4");
-//
-//                    if (o != null)
-//                    {
-//                         System.out.println("5");
-//                        return o.getClass();
-//                       
-//                    }
-//                }
-//
-//                return Object.class;
-//            }
-//        };
+
     }
     public void FillComboBox(){
          String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
-        String password = "yana246897531";
+        String password = "1";
         String sql = "SELECT last_name, e_mail FROM user_table ";
 
         try  {
@@ -449,12 +381,17 @@ public class ProfilePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("АРМ Лікаря");
+        jLabel2.setText("АРМ Сімейного Лікаря");
 
         listOfDoctors.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Оберіть лікаря" }));
         listOfDoctors.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 listOfDoctorsItemStateChanged(evt);
+            }
+        });
+        listOfDoctors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listOfDoctorsActionPerformed(evt);
             }
         });
 
@@ -528,10 +465,6 @@ public class ProfilePage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(192, 192, 192)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(MainPanelLayout.createSequentialGroup()
                                 .addComponent(graphicOfWork, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -567,8 +500,13 @@ public class ProfilePage extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(thirdSample)))))
                         .addGap(66, 66, 66)
-                        .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,7 +586,7 @@ public class ProfilePage extends javax.swing.JFrame {
         String email = null;
         String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
-        String password = "yana246897531";
+        String password = "1";
         String sql = "SELECT e_mail from user_table where last_name like '"+lastName+"'";
 
         try  {
@@ -710,6 +648,10 @@ public class ProfilePage extends javax.swing.JFrame {
             ioe.printStackTrace();
         }
     }//GEN-LAST:event_thirdSampleActionPerformed
+
+    private void listOfDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listOfDoctorsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listOfDoctorsActionPerformed
     
     /**
      * @param args the command line arguments
@@ -747,13 +689,13 @@ public class ProfilePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Change_graphic;
+    public javax.swing.JButton Change_graphic;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JPanel TopPanel;
+    public javax.swing.JPanel TopPanel;
     public javax.swing.JPanel calendar;
-    private javax.swing.JButton cancelBtn;
+    public javax.swing.JButton cancelBtn;
     public javax.swing.JButton firstSample;
-    private javax.swing.JTextField fri;
+    public javax.swing.JTextField fri;
     private javax.swing.JLabel graphicOfWork;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -763,14 +705,14 @@ public class ProfilePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JButton journalBtn;
-    private javax.swing.JComboBox listOfDoctors;
-    private javax.swing.JTextField monday;
+    public javax.swing.JButton journalBtn;
+    public javax.swing.JComboBox listOfDoctors;
+    public javax.swing.JTextField monday;
     public javax.swing.JButton secondSample;
     public javax.swing.JButton thirdSample;
-    private javax.swing.JTextField thu;
-    private javax.swing.JTextField tuesday;
-    private javax.swing.JTextField wed;
+    public javax.swing.JTextField thu;
+    public javax.swing.JTextField tuesday;
+    public javax.swing.JTextField wed;
     // End of variables declaration//GEN-END:variables
 
 }

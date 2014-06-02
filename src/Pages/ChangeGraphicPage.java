@@ -270,7 +270,7 @@ public class ChangeGraphicPage extends javax.swing.JFrame {
     }//GEN-LAST:event_createBtnActionPerformed
 
     private void thursdayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thursdayMouseClicked
-        // TODO add your handling code here:
+        thursday.setText(""); 
     }//GEN-LAST:event_thursdayMouseClicked
 
     private void thursdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thursdayActionPerformed

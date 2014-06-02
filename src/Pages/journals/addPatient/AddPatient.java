@@ -7,11 +7,12 @@
 package Pages.journals.addPatient;
 
 
+import Pages.JournalPage;
 import static Pages.JournalPage.callPage;
-import static Pages.JournalPage.hospitalHomePage;
+import static Pages.ProfilePage.journalPage;
 import Pages.SignOutPage;
-import static Pages.journals.CallPage.addPatientCall;
-import static Pages.journals.HospitalHomePage.addPatientHospital;
+import static Pages.journals.AddmissionPage.addPatient;
+import javax.swing.JTextField;
 import services.DBConnection;
 import services.Patient;
 import services.UserServices;
@@ -20,14 +21,14 @@ import services.UserServices;
  *
  * @author iRoma
  */
-public class AddPatientHospital extends javax.swing.JFrame {
+public class AddPatient extends javax.swing.JFrame {
     public static SignOutPage signOutPage;
 //
 
     /**
      * Creates new form LoginPage
      */
-    public AddPatientHospital() {
+    public AddPatient() {
         initComponents();
     }
 
@@ -48,11 +49,14 @@ public class AddPatientHospital extends javax.swing.JFrame {
         TopPanel1 = new javax.swing.JPanel();
         firstName = new javax.swing.JTextField();
         birthday = new javax.swing.JTextField();
+        work = new javax.swing.JTextField();
         address = new javax.swing.JTextField();
         diagnosis = new javax.swing.JTextField();
         lastName = new javax.swing.JTextField();
-        dateFrom = new javax.swing.JTextField();
-        dateTo = new javax.swing.JTextField();
+        tempLabel = new javax.swing.JTextField();
+        selectDirection = new javax.swing.JComboBox();
+        lb1 = new javax.swing.JTextField();
+        lb2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -135,6 +139,19 @@ public class AddPatientHospital extends javax.swing.JFrame {
             }
         });
 
+        work.setForeground(new java.awt.Color(153, 153, 153));
+        work.setText("Місце роботи / навчальний заклад");
+        work.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                workMouseClicked(evt);
+            }
+        });
+        work.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                workActionPerformed(evt);
+            }
+        });
+
         address.setForeground(new java.awt.Color(153, 153, 153));
         address.setText("Адреса проживання");
         address.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -174,29 +191,54 @@ public class AddPatientHospital extends javax.swing.JFrame {
             }
         });
 
-        dateFrom.setForeground(new java.awt.Color(153, 153, 153));
-        dateFrom.setText("З якого числа");
-        dateFrom.addMouseListener(new java.awt.event.MouseAdapter() {
+        tempLabel.setForeground(new java.awt.Color(153, 153, 153));
+        tempLabel.setText("Температура");
+        tempLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dateFromMouseClicked(evt);
+                tempLabelMouseClicked(evt);
             }
         });
-        dateFrom.addActionListener(new java.awt.event.ActionListener() {
+        tempLabel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateFromActionPerformed(evt);
+                tempLabelActionPerformed(evt);
             }
         });
 
-        dateTo.setForeground(new java.awt.Color(153, 153, 153));
-        dateTo.setText("По яке число");
-        dateTo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dateToMouseClicked(evt);
+        selectDirection.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Прийом", "Виклики", "Диспансер", "Лікування вдома", "Інфекційне", "Щеплення", "Відмова від щеплення" }));
+        selectDirection.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectDirectionItemStateChanged(evt);
             }
         });
-        dateTo.addActionListener(new java.awt.event.ActionListener() {
+        selectDirection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateToActionPerformed(evt);
+                selectDirectionActionPerformed(evt);
+            }
+        });
+
+        lb1.setForeground(new java.awt.Color(153, 153, 153));
+        lb1.setText("Дата прийому");
+        lb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lb1MouseClicked(evt);
+            }
+        });
+        lb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lb1ActionPerformed(evt);
+            }
+        });
+
+        lb2.setForeground(new java.awt.Color(153, 153, 153));
+        lb2.setText("Час прийому");
+        lb2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lb2MouseClicked(evt);
+            }
+        });
+        lb2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lb2ActionPerformed(evt);
             }
         });
 
@@ -206,20 +248,24 @@ public class AddPatientHospital extends javax.swing.JFrame {
             TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TopPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(TopPanel1Layout.createSequentialGroup()
-                        .addComponent(dateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(dateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(diagnosis)
-                        .addGroup(TopPanel1Layout.createSequentialGroup()
-                            .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(address)))
+                        .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectDirection, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TopPanel1Layout.createSequentialGroup()
+                        .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(TopPanel1Layout.createSequentialGroup()
+                        .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(diagnosis))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TopPanel1Layout.setVerticalGroup(
@@ -231,14 +277,20 @@ public class AddPatientHospital extends javax.swing.JFrame {
                     .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(work, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tempLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(diagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(selectDirection, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(TopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(diagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
@@ -247,7 +299,7 @@ public class AddPatientHospital extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 153, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("АРМ Лікаря");
+        jLabel2.setText("АРМ Сімейного Лікаря");
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
@@ -260,8 +312,8 @@ public class AddPatientHospital extends javax.swing.JFrame {
                     .addComponent(TopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(192, 192, 192)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -271,7 +323,7 @@ public class AddPatientHospital extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -294,26 +346,57 @@ public class AddPatientHospital extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        String first_name = "'"+firstName.getText()+"'";
+      String first_name = "'"+firstName.getText()+"'";
         String last_name = "'"+lastName.getText()+"'";
         String birth_day = "'"+birthday.getText()+"'";
         String addres = "'"+address.getText()+"'";
-        String date_from = "'"+dateFrom.getText()+"'";
+        String patient_work = "'"+work.getText()+"'";
         String main_diagnoz = "'"+diagnosis.getText()+"'";
-        String date_to = "'"+dateTo.getText()+"'";
-        
+        String temp = "'"+tempLabel.getText()+"'";
+        String lbOne = "'"+lb1.getText()+"'";
+        String lbTwo = "'"+lb2.getText()+"'";
         Patient patient=null;
-        patient = new Patient( null, null, first_name, last_name, birth_day, addres, null, main_diagnoz, null, null,null
-                , null, main_diagnoz, null, date_from, date_to, null, null, null, null, null);
+        if (selectDirection.getSelectedItem().equals("Щеплення")){
+            patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null, null
+                , null, null, null, null, null, null, null, main_diagnoz, null, null); 
+          }
+         if (selectDirection.getSelectedItem().equals("Виклики")){
+            patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, temp, null,main_diagnoz
+                , null, null, null, null, null, null, null, null, null, null);
+          }
+          if (selectDirection.getSelectedItem().equals("Диспансер")){
+           patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null, null
+                , main_diagnoz, null, null, null, null, null, null, null, null, null);
+          }
+           if (selectDirection.getSelectedItem().equals("Прийом")){
+           patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, main_diagnoz, null
+                , null, null, null, null, null, null, null, null, null, null);
+          }
+            if (selectDirection.getSelectedItem().equals("Відмова від щеплення")){
+           patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null, null
+                , null, null, null, null, null, null, null, null, lbOne, lbTwo);
+          }
+             if (selectDirection.getSelectedItem().equals("Інфекційне")){
+           patient = new Patient( null, null, first_name, last_name, birth_day, addres, patient_work, main_diagnoz, null, null,null
+                , null, null, main_diagnoz, null, null, lbOne, lbTwo, null, null, null);
+          }
+              if (selectDirection.getSelectedItem().equals("Лікування вдома")){
+            patient = new Patient( null, null, first_name, last_name, birth_day, addres, null, main_diagnoz, null, null,null
+                , null, main_diagnoz, null, lbOne, lbTwo, null, null, null, null, null);
+          }
+           
+       
         UserServices.addPatient(patient);
         System.out.println("patien was added");
-        addPatientHospital.setVisible(false);
-        hospitalHomePage.setVisible(true);
+        addPatient.setVisible(false);
+        journalPage.setVisible(true);
+       
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        addPatientHospital.setVisible(false);
-        hospitalHomePage.setVisible(true);
+        addPatient.setVisible(false);
+        journalPage.setVisible(true);
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void firstNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_firstNameMouseClicked
@@ -332,6 +415,14 @@ public class AddPatientHospital extends javax.swing.JFrame {
     private void birthdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birthdayActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_birthdayActionPerformed
+
+    private void workMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_workMouseClicked
+        work.setText("");
+    }//GEN-LAST:event_workMouseClicked
+
+    private void workActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_workActionPerformed
 
     private void addressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addressMouseClicked
         address.setText("");
@@ -359,31 +450,77 @@ public class AddPatientHospital extends javax.swing.JFrame {
 
     private void cleanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cleanBtnActionPerformed
 
+       
         lastName.setText("Прізвище");
         firstName.setText("Ім'я");
         birthday.setText("Дата народження");
+        work.setText("Місце роботи / навчальний заклад");
         address.setText("Адреса проживання");
         diagnosis.setText("Зміст справи");
-        dateFrom.setText("З якого числа");
-        dateTo.setText("По яке число");
+        tempLabel.setText("Температура");
         
     }//GEN-LAST:event_cleanBtnActionPerformed
 
-    private void dateFromMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateFromMouseClicked
-        dateFrom.setText("");
-    }//GEN-LAST:event_dateFromMouseClicked
+    private void tempLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tempLabelMouseClicked
+        tempLabel.setText("");
+    }//GEN-LAST:event_tempLabelMouseClicked
 
-    private void dateFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFromActionPerformed
+    private void tempLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempLabelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dateFromActionPerformed
+    }//GEN-LAST:event_tempLabelActionPerformed
 
-    private void dateToMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateToMouseClicked
-        dateTo.setText("");
-    }//GEN-LAST:event_dateToMouseClicked
+    private void lb1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb1MouseClicked
+        lb1.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_lb1MouseClicked
 
-    private void dateToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateToActionPerformed
+    private void lb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lb1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dateToActionPerformed
+    }//GEN-LAST:event_lb1ActionPerformed
+
+    private void lb2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb2MouseClicked
+      lb2.setText(""); 
+    }//GEN-LAST:event_lb2MouseClicked
+
+    private void lb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lb2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lb2ActionPerformed
+
+    private void selectDirectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectDirectionActionPerformed
+         
+    }//GEN-LAST:event_selectDirectionActionPerformed
+
+    private void selectDirectionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectDirectionItemStateChanged
+         if (selectDirection.getSelectedItem().equals("Щеплення")){
+           lb1.setText("Тип щеплення");
+           lb2.setText("Дата щеплення");
+          }
+         if (selectDirection.getSelectedItem().equals("Виклики")){
+           lb1.setText("Дата виклику");
+           lb2.setText("Час виклику");
+          }
+          if (selectDirection.getSelectedItem().equals("Диспансер")){
+           lb1.setText("Дата прийому");
+           lb2.setText("Дата виписки");
+          }
+           if (selectDirection.getSelectedItem().equals("Прийом")){
+           lb1.setText("Дата прийому");
+           lb2.setText("Час прийому");
+          }
+            if (selectDirection.getSelectedItem().equals("Відмова від щеплення")){
+           lb1.setText("Тип щеплення");
+           lb2.setText("До якого часу");
+          }
+             if (selectDirection.getSelectedItem().equals("Інфекційне")){
+           lb1.setText("Дата встановлення діагнозу");
+           lb2.setText("Дата повідовлення в СЕС");
+          }
+              if (selectDirection.getSelectedItem().equals("Лікування вдома")){
+           lb1.setText("Дата виклику лікаря");
+           lb2.setText("Дата виписки");
+          }
+            
+        
+    }//GEN-LAST:event_selectDirectionItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -402,20 +539,20 @@ public class AddPatientHospital extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPatientHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPatientHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPatientHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPatientHospital.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPatient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPatientHospital().setVisible(true);
+                new AddPatient().setVisible(true);
             }
         });
     }
@@ -429,12 +566,15 @@ public class AddPatientHospital extends javax.swing.JFrame {
     public javax.swing.JTextField birthday;
     public javax.swing.JButton cancelBtn;
     public javax.swing.JButton cleanBtn;
-    public javax.swing.JTextField dateFrom;
-    public javax.swing.JTextField dateTo;
     public javax.swing.JTextField diagnosis;
     public javax.swing.JTextField firstName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JTextField lastName;
+    public javax.swing.JTextField lb1;
+    public javax.swing.JTextField lb2;
+    public javax.swing.JComboBox selectDirection;
+    public javax.swing.JTextField tempLabel;
+    public javax.swing.JTextField work;
     // End of variables declaration//GEN-END:variables
 }
