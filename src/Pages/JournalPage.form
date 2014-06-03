@@ -43,19 +43,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="errorLabel" min="-2" pref="366" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="deleteBtn" min="-2" pref="174" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="deleteTA" min="-2" pref="182" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="deleteBtn" min="-2" pref="174" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="deleteTA" min="-2" pref="182" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="errorLabel" min="-2" pref="366" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -66,7 +62,7 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="TopPanel" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -89,9 +85,9 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="TopPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="235" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" min="-2" pref="160" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                   <Component id="errorLabel" min="-2" pref="25" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -121,19 +117,34 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="vaccinationBtn" min="-2" pref="101" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="infectionsBtn" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dispensaryBtn" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addmissionBtn" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="callBtn" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="homeHospitalBtn" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="refusedBtn" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cancelBtn" min="-2" pref="126" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="infectionsBtn" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              <Component id="dispensaryBtn" min="-2" pref="101" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="selectPatient" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="addmissionBtn" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="callBtn" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="homeHospitalBtn" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="refusedBtn" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cancelBtn" min="-2" pref="126" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="searchTA" min="-2" pref="182" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="searchBtn" min="-2" pref="174" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -141,7 +152,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="vaccinationBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="infectionsBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
@@ -152,7 +163,13 @@
                           <Component id="refusedBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="cancelBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="selectPatient" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="searchTA" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="searchBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -246,6 +263,49 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JButton" name="searchBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x41f;&#x43e;&#x448;&#x443;&#x43a; &#x43f;&#x430;&#x446;&#x456;&#x454;&#x43d;&#x442;&#x430;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="searchTA">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="99" green="99" red="99" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchTAMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchTAActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="selectPatient">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="&#x41f;&#x43e;&#x43a;&#x430;&#x437;&#x430;&#x442;&#x438; &#x432;&#x441;&#x456;&#x445;"/>
+                    <StringItem index="1" value="&#x41f;&#x43e;&#x448;&#x443;&#x43a; &#x43f;&#x43e; &#x43f;&#x440;&#x456;&#x437;&#x432;&#x438;&#x449;&#x443; &#x43f;&#x430;&#x446;&#x456;&#x454;&#x43d;&#x442;&#x430;"/>
+                    <StringItem index="2" value="&#x41f;&#x43e;&#x448;&#x443;&#x43a; &#x43f;&#x43e; &#x434;&#x456;&#x430;&#x433;&#x43d;&#x43e;&#x437;&#x443; &#x43f;&#x430;&#x446;&#x456;&#x454;&#x43d;&#x442;&#x430;"/>
+                    <StringItem index="3" value="&#x41f;&#x43e;&#x448;&#x443;&#x43a; &#x43f;&#x43e; &#x442;&#x438;&#x43f;&#x443; &#x449;&#x435;&#x43f;&#x43b;&#x435;&#x43d;&#x43d;&#x44f; "/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="selectPatientItemStateChanged"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -255,32 +315,16 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="patientTable">
-              <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
-                    <Column editable="true" title="&#x2116;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#x41f;&#x406;&#x411;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#x414;&#x430;&#x442;&#x430; &#x43d;&#x430;&#x440;&#x43e;&#x434;&#x436;&#x435;&#x43d;&#x43d;&#x44f;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#x410;&#x434;&#x440;&#x435;&#x441;&#x430; &#x43f;&#x440;&#x43e;&#x436;&#x438;&#x432;&#x430;&#x43d;&#x43d;&#x44f;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#x41c;&#x456;&#x441;&#x446;&#x435; &#x440;&#x43e;&#x431;&#x43e;&#x442;&#x438;/&#x43d;&#x430;&#x432;&#x447;&#x430;&#x43b;&#x44c;&#x43d;&#x438;&#x439; &#x437;&#x430;&#x43a;&#x43b;&#x430;&#x434;" type="java.lang.Object"/>
-                  </Table>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
         <Component class="javax.swing.JTextField" name="deleteTA">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x412;&#x432;&#x435;&#x434;&#x456;&#x442;&#x44c; &#x43f;&#x440;&#x456;&#x437;&#x432;&#x438;&#x449;&#x435; &#x43f;&#x430;&#x446;&#x456;&#x454;&#x43d;&#x442;&#x430;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteTAMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -316,6 +360,34 @@
             <Property name="text" type="java.lang.String" value="&#x410;&#x420;&#x41c; &#x421;&#x456;&#x43c;&#x435;&#x439;&#x43d;&#x43e;&#x433;&#x43e; &#x41b;&#x456;&#x43a;&#x430;&#x440;&#x44f;"/>
           </Properties>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="patientTable">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="6" rowCount="4">
+                    <Column editable="true" title="&#x2116;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#x41f;&#x406;&#x411;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#x414;&#x430;&#x442;&#x430; &#x43d;&#x430;&#x440;&#x43e;&#x434;&#x436;&#x435;&#x43d;&#x43d;&#x44f;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#x410;&#x434;&#x440;&#x435;&#x441;&#x430; &#x43f;&#x440;&#x43e;&#x436;&#x438;&#x432;&#x430;&#x43d;&#x43d;&#x44f;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#x41c;&#x456;&#x441;&#x446;&#x435; &#x440;&#x43e;&#x431;&#x43e;&#x442;&#x438;/&#x43d;&#x430;&#x432;&#x447;&#x430;&#x43b;&#x44c;&#x43d;&#x438;&#x439; &#x437;&#x430;&#x43a;&#x43b;&#x430;&#x434;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#x414;&#x456;&#x430;&#x433;&#x43d;&#x43e;&#x437;" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ArrayList&lt;Items&gt; dataList;&#xd;&#xa;&#x9;&#x9;&#x9;dataList = RozkladDB.getAll();&#xd;&#xa;&#x9;&#x9;&#x9;DefaultTableModel model = new DefaultTableModel();&#xd;&#xa;&#x9;&#x9;&#x9;model.setRowCount(dataList.size());&#xd;&#xa;&#x9;&#x9;&#x9;int row = 0;&#xd;&#xa;&#x9;&#x9;&#x9;for (Items data : dataList) {&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.id, row, 0);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.day, row, 1);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.lessonNumb, row, 2);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.firstCourse, row, 3);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.firstAud, row, 4);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.secondCourse, row, 5);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.secondAud, row, 6);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.thirdCourse, row, 7);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.thirdAud, row, 8);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.fourCourse, row, 9);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.fourAud, row, 10);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.fiveCourse, row, 11);&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;model.setValueAt(data.fiveAud, row, 12);&#xd;&#xa;&#xd;&#xa;&#x9;&#x9;&#x9;&#x9;row++;&#xd;&#xa;&#x9;&#x9;&#x9;}"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

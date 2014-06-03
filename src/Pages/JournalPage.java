@@ -7,6 +7,7 @@
 package Pages;
 
 import static Pages.ProfilePage.journalPage;
+import static Pages.SampleJTable.buildTableModel;
 import static Pages.SignInPage.profilePage;
 import Pages.journals.*;
 import java.sql.Connection;
@@ -17,7 +18,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.*;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import services.DBConnection;
 import services.Patient;
 import services.PatientServices;
@@ -43,28 +47,15 @@ public class JournalPage extends javax.swing.JFrame {
     public JournalPage() {
         initComponents();
     }
-    public void UpdateTable(){
-        ArrayList columnNames = new ArrayList();
-        ArrayList data = new ArrayList();
+   public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
+        ResultSetMetaData metaData = rs.getMetaData();
+// names of columns
 
-        //  Connect to an MySQL Database, run query, get result set
-        String url = "jdbc:mysql://localhost:3306/medical_client";
-        String userid = "root";
-        String password = "1";
-        String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
-                + "diagnoz from patienttable WHERE diagnoz is not null and user_name like '"+SignInPage.user.getE_mail()+"'";
+        Vector<String> columnNames = new Vector<String>();
 
-        // Java SE 7 has try-with-resources
-        // This will ensure that the sql objects are closed when the program
-        // is finished with them
-        try (Connection connection = DriverManager.getConnection( url, userid, password );
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery( sql ))
-        {
-            ResultSetMetaData md = rs.getMetaData();
-            int columns = md.getColumnCount();
+        int columnCount = metaData.getColumnCount();
 
-            //  Get column names
+       
 
             columnNames.add( "№");
             columnNames.add( "Ім'я");
@@ -72,49 +63,64 @@ public class JournalPage extends javax.swing.JFrame {
             columnNames.add( "Дата народження");
             columnNames.add( "Адреса");
             columnNames.add( "Місце роботи/навчання");
-            columnNames.add( "Діагноз");
+            columnNames.add( "Діагноз/Щеплення");
 
+        
+        // data of the table
 
-            //  Get row data
-            while (rs.next())
-            {
-                ArrayList row = new ArrayList(columns);
+        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 
-                for (int i = 1; i <= columns; i++)
-                {
-                    row.add( rs.getObject(i) );
-                }
+        while (rs.next()) {
 
-                data.add( row );
+            Vector<Object> vector = new Vector<Object>();
+
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+
+                vector.add(rs.getObject(columnIndex));
+
             }
+
+            data.add(vector);
+
+        }
+        return new DefaultTableModel(data, columnNames);
+
+ 
+
+    }   
+
+    public void refreshTable(String sql){
+        String url = "jdbc:mysql://localhost:3306/medical_client";
+        String userid = "root";
+        String password = "yana246897531";
+         try (Connection connection = DriverManager.getConnection( url, userid, password );
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery( sql ))
+        {
+        patientTable.setModel(buildTableModel(rs));
         }
         catch (SQLException e)
         {
             System.out.println( e.getMessage() );
         }
+    }
+    public void UpdateTable(String sql){
 
-        // Create Vectors and copy over elements from ArrayLists to them
-        // Vector is deprecated but I am using them in this example to keep
-        // things simple - the best practice would be to create a custom defined
-        // class which inherits from the AbstractTableModel class
-        Vector columnNamesVector = new Vector();
-        Vector dataVector = new Vector();
 
-        for (int i = 0; i < data.size(); i++)
+        ArrayList columnNames = new ArrayList();
+        ArrayList data = new ArrayList();
+
+        //  Connect to an MySQL Database, run query, get result set
+        String url = "jdbc:mysql://localhost:3306/medical_client";
+        String userid = "root";
+        String password = "yana246897531";
+  
+        try (Connection connection = DriverManager.getConnection( url, userid, password );
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery( sql ))
         {
-            ArrayList subArray = (ArrayList)data.get(i);
-            Vector subVector = new Vector();
-            for (int j = 0; j < subArray.size(); j++)
-            {
-                subVector.add(subArray.get(j));
-            }
-            dataVector.add(subVector);
-        }
-        for (int i = 0; i < columnNames.size(); i++ )
-            columnNamesVector.add(columnNames.get(i));
+             patientTable = new JTable(buildTableModel(rs))
 
-        //  Create table with database data
-        patientTable = new JTable(dataVector, columnNamesVector)
         {
             public Class getColumnClass(int column)
             {
@@ -131,6 +137,14 @@ public class JournalPage extends javax.swing.JFrame {
                 return Object.class;
             }
         };
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println( e.getMessage() );
+        }
+
+       
     }
 
     /**
@@ -152,13 +166,23 @@ public class JournalPage extends javax.swing.JFrame {
         refusedBtn = new javax.swing.JButton();
         homeHospitalBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
+        searchTA = new javax.swing.JTextField();
+        selectPatient = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-		UpdateTable();
         deleteTA = new javax.swing.JTextField();
         deleteBtn = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE diagnoz is not null and user_name like '"+SignInPage.user.getE_mail()+"'";
+
+        UpdateTable(sql);
+        jScrollPane3.setViewportView(patientTable);
+
+
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,6 +246,32 @@ public class JournalPage extends javax.swing.JFrame {
             }
         });
 
+        searchBtn.setText("Пошук пацієнта");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
+        searchTA.setForeground(new java.awt.Color(153, 153, 153));
+        searchTA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchTAMouseClicked(evt);
+            }
+        });
+        searchTA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTAActionPerformed(evt);
+            }
+        });
+
+        selectPatient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Показати всіх", "Пошук по прізвищу пацієнта", "Пошук по діагнозу пацієнта", "Пошук по типу щеплення " }));
+        selectPatient.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                selectPatientItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
@@ -230,25 +280,35 @@ public class JournalPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(vaccinationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(infectionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dispensaryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addmissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(callBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(homeHospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(refusedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(TopPanelLayout.createSequentialGroup()
+                        .addComponent(infectionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(dispensaryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(selectPatient, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TopPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addmissionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(callBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(homeHospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refusedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TopPanelLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(searchTA, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TopPanelLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addContainerGap()
                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vaccinationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(infectionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,13 +318,23 @@ public class JournalPage extends javax.swing.JFrame {
                     .addComponent(homeHospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refusedBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchTA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/65.png"))); // NOI18N
 
-    
-        jScrollPane1.setViewportView(patientTable);
+        deleteTA.setForeground(new java.awt.Color(153, 153, 153));
+        deleteTA.setText("Введіть прізвище пацієнта");
+        deleteTA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteTAMouseClicked(evt);
+            }
+        });
 
         deleteBtn.setText("Видалити пацієнта");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -279,6 +349,9 @@ public class JournalPage extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("АРМ Сімейного Лікаря");
 
+
+
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -287,13 +360,11 @@ public class JournalPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(deleteTA, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteTA, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
@@ -302,7 +373,7 @@ public class JournalPage extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(TopPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())))
         );
         MainPanelLayout.setVerticalGroup(
@@ -317,9 +388,9 @@ public class JournalPage extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -342,55 +413,8 @@ public class JournalPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void vaccinationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccinationBtnActionPerformed
-        vactinationPage = new VaccinationPage();
-        vactinationPage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_vaccinationBtnActionPerformed
-
-    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
-        journalPage.setVisible(false);
-        profilePage.setVisible(true);
-    }//GEN-LAST:event_cancelBtnActionPerformed
-
-    private void callBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callBtnActionPerformed
-        callPage = new CallPage();
-        callPage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_callBtnActionPerformed
-
-    private void addmissionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addmissionBtnActionPerformed
-        addmissionPage = new AddmissionPage();
-        addmissionPage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_addmissionBtnActionPerformed
-
-    private void dispensaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispensaryBtnActionPerformed
-        dispensaryPage = new DispensaryPage();
-        dispensaryPage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_dispensaryBtnActionPerformed
-
-    private void infectionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infectionsBtnActionPerformed
-        infectionsPage = new InfectionsPage();
-        infectionsPage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_infectionsBtnActionPerformed
-
-    private void refusedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refusedBtnActionPerformed
-        refusedPage = new RefusedPage();
-        refusedPage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_refusedBtnActionPerformed
-
-    private void homeHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeHospitalBtnActionPerformed
-        hospitalHomePage = new HospitalHomePage();
-        hospitalHomePage.setVisible(true);
-        journalPage.setVisible(false);
-    }//GEN-LAST:event_homeHospitalBtnActionPerformed
-
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
- String lastName=deleteTA.getText();
+        String lastName=deleteTA.getText();
         Patient patient=null;
         System.out.println("ssss");
         if (lastName!=null){
@@ -400,13 +424,121 @@ public class JournalPage extends javax.swing.JFrame {
                 System.out.println("sss");
                 DBConnection.deletePatient(patient);
                 errorLabel.setText("Пацієнт був видалений");
+               
+                String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE diagnoz is not null and user_name like '"+SignInPage.user.getE_mail()+"'";
+                refreshTable(sql);
                 
-                UpdateTable();
-                
+
             } else {
             }
-        }       
+        }
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void deleteTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteTAMouseClicked
+        deleteTA.setText("");
+    }//GEN-LAST:event_deleteTAMouseClicked
+
+    private void selectPatientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_selectPatientItemStateChanged
+        if(selectPatient.getSelectedItem().equals("Пошук по прізвищу пацієнта")){
+            searchTA.setText("Введіть прізвище пацієнта");
+        }
+        if(selectPatient.getSelectedItem().equals("Пошук по діагнозу пацієнта")){
+            searchTA.setText("Введіть діагноз пацієнта");
+        }
+        if(selectPatient.getSelectedItem().equals("Пошук по типу щеплення")){
+            searchTA.setText("Введіть тип щеплення");
+        }
+    }//GEN-LAST:event_selectPatientItemStateChanged
+
+    private void searchTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTAActionPerformed
+
+    private void searchTAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchTAMouseClicked
+        searchTA.setText("");
+    }//GEN-LAST:event_searchTAMouseClicked
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+
+        if(selectPatient.getSelectedItem().equals("Показати всіх")){
+            
+            
+             String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE diagnozis not null and user_name like '"+SignInPage.user.getE_mail()+"'";
+            
+             refreshTable(sql);
+        }
+        if(selectPatient.getSelectedItem().equals("Пошук по прізвищу пацієнта")){
+            
+            String search = searchTA.getText();
+             String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE last_name like '"+search+"' and user_name like '"+SignInPage.user.getE_mail()+"'";
+            
+             refreshTable(sql);
+        }
+        if(selectPatient.getSelectedItem().equals("Пошук по діагнозу пацієнта")){
+            String search = searchTA.getText();
+            String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE diagnoz like '"+search+"' and user_name like '"+SignInPage.user.getE_mail()+"'";
+            
+           refreshTable(sql);
+        }
+        if(selectPatient.getSelectedItem().equals("Пошук по типу щеплення")){
+            String search = searchTA.getText();
+            String sql = "SELECT id, first_name, last_name, birthday, address, `work`, "
+                + "diagnoz from patienttable WHERE vactination like '"+search+"' and user_name like '"+SignInPage.user.getE_mail()+"'";
+              
+            refreshTable(sql);
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
+        journalPage.setVisible(false);
+        profilePage.setVisible(true);
+    }//GEN-LAST:event_cancelBtnActionPerformed
+
+    private void homeHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeHospitalBtnActionPerformed
+        hospitalHomePage = new HospitalHomePage();
+        hospitalHomePage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_homeHospitalBtnActionPerformed
+
+    private void refusedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refusedBtnActionPerformed
+        refusedPage = new RefusedPage();
+        refusedPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_refusedBtnActionPerformed
+
+    private void infectionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infectionsBtnActionPerformed
+        infectionsPage = new InfectionsPage();
+        infectionsPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_infectionsBtnActionPerformed
+
+    private void dispensaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispensaryBtnActionPerformed
+        dispensaryPage = new DispensaryPage();
+        dispensaryPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_dispensaryBtnActionPerformed
+
+    private void addmissionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addmissionBtnActionPerformed
+        addmissionPage = new AddmissionPage();
+        addmissionPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_addmissionBtnActionPerformed
+
+    private void callBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callBtnActionPerformed
+        callPage = new CallPage();
+        callPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_callBtnActionPerformed
+
+    private void vaccinationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccinationBtnActionPerformed
+        vactinationPage = new VaccinationPage();
+        vactinationPage.setVisible(true);
+        journalPage.setVisible(false);
+    }//GEN-LAST:event_vaccinationBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,9 +589,12 @@ public class JournalPage extends javax.swing.JFrame {
     public javax.swing.JButton infectionsBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JTable patientTable;
     public javax.swing.JButton refusedBtn;
+    public javax.swing.JButton searchBtn;
+    public javax.swing.JTextField searchTA;
+    public javax.swing.JComboBox selectPatient;
     public javax.swing.JButton vaccinationBtn;
     // End of variables declaration//GEN-END:variables
 }

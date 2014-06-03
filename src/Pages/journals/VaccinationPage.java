@@ -42,7 +42,7 @@ public void UpdateTable(){
         //  Connect to an MySQL Database, run query, get result set
         String url = "jdbc:mysql://localhost:3306/medical_client";
         String userid = "root";
-        String password = "1";
+        String password = "yana246897531";
         String sql = "SELECT id, first_name, last_name, birthday, address, `work`, vactination "
                 + "from patienttable WHERE vactination is not null and user_name like '"+SignInPage.user.getE_mail()+"'";
 

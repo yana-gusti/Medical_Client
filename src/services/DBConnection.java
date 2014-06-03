@@ -251,7 +251,7 @@ public class DBConnection implements Interface<Users> {
 		}
 
 	}
-//        public static boolean SelectEmail(String lastName) {
+//        public static boolean SearchPatient(String lastName) {
 //		PreparedStatement stmt = null;
 //
 //		try {
